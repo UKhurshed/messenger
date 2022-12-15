@@ -6,6 +6,8 @@ target 'messenger' do
   use_frameworks!
   pod 'SnapKit', '~> 5.6.0'
   pod 'R.swift'
+  pod 'FirebaseAuth'
+  pod 'FirebaseFirestore'
 
   # Pods for messenger
 
