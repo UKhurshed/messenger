@@ -10,6 +10,9 @@ target 'messenger' do
   pod 'FirebaseFirestore'
   pod 'FirebaseDatabase'
   pod 'FirebaseMessaging'
+  pod 'MessageKit'
+  pod 'JGProgressHUD'
+  pod 'SDWebImage'
 
   # Pods for messenger
 
