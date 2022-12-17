@@ -19,6 +19,8 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         // This delegate does not imply the connecting scene or session are new (see `application:configurationForConnectingSceneSession` instead).
         guard let windowScene = (scene as? UIWindowScene) else { return }
         let window = UIWindow(windowScene: windowScene)
+        print("User: \(String(describing: FirebaseAuth.Auth.auth().currentUser?.email))")
+        
         if FirebaseAuth.Auth.auth().currentUser == nil {
             let loginVC = UINavigationController(rootViewController: LoginViewController())
             window.rootViewController = loginVC

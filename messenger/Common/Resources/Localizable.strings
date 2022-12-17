@@ -11,6 +11,10 @@
 "password" = "Enter password";
 "logIn" = "Login";
 
+"firstName" = "First Name";
+"lastName" = "Last Name";
+"registerBtn" = "Register";
+
 "errorLabel" = "Error";
 "alertDismiss" = "Dismiss";
 

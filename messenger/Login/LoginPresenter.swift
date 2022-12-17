@@ -25,14 +25,19 @@ class LoginPresenter: LoginViewInput {
     
     func loginByEmailAndPassword(request: LoginRequest) {
         viewContoller?.startLoading()
-        FirebaseAuth.Auth.auth().createUser(withEmail: request.email, password: request.password) { [weak self] authResult, error in
-            guard let result = authResult, error == nil else {
-                self?.viewContoller?.showError(errorDescription: error?.localizedDescription ?? "")
+        FirebaseAuth.Auth.auth().createUser(withEmail: request.email, password: request.password) {
+            [weak self] authResult, error in
+            guard let strongSelf = self else {
+                self?.viewContoller?.showError(errorDescription: R.string.localizable.freedReference())
                 return
             }
-            self?.viewContoller?.finishLoading()
+            guard let result = authResult, error == nil else {
+                strongSelf.viewContoller?.showError(errorDescription: error?.localizedDescription ?? "")
+                return
+            }
+            strongSelf.viewContoller?.finishLoading()
             let user: User = result.user
-            self?.viewContoller?.success(viewModel: LoginViewModel(email: user.email ?? "email"))
+            strongSelf.viewContoller?.success(viewModel: LoginViewModel(email: user.email ?? "email"))
         }
     }
 }

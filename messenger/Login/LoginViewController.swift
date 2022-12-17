@@ -21,8 +21,16 @@ class LoginViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        title = "Log In"
+        navigationItem.rightBarButtonItem = UIBarButtonItem(title: "Register", style: .done, target: self, action: #selector(tappedRegister))
         loginUIView.delegate = self
         setup()
+    }
+    
+    @objc private func tappedRegister() {
+        let vc = RegisterViewController()
+        vc.title = "Create Account"
+        navigationController?.pushViewController(vc, animated: true)
     }
 
     private func setup() {
@@ -55,7 +63,7 @@ extension LoginViewController: LoginDisplayLogic {
         print("viewModel: \(viewModel)")
         let mainVC = ViewController()
         mainVC.modalPresentationStyle = .fullScreen
-        navigationController?.pushViewController(mainVC, animated: true)
+        navigationController?.dismiss(animated: true, completion: nil)
     }
     
     func showError(errorDescription: String) {
