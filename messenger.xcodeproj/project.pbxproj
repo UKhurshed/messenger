@@ -8,6 +8,9 @@
 
 /* Begin PBXBuildFile section */
 		5377B9096AE12B375FBE284C /* Pods_messenger.framework in Frameworks */ = {isa = PBXBuildFile; fileRef = 39615C72087CD1271E826DF8 /* Pods_messenger.framework */; };
+		D30EA7F2294D7EDC00F65FFC /* DatabaseManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = D30EA7F1294D7EDC00F65FFC /* DatabaseManager.swift */; };
+		D30EA7F4294D8A7600F65FFC /* RegisterPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = D30EA7F3294D8A7600F65FFC /* RegisterPresenter.swift */; };
+		D30EA7F6294D8AAB00F65FFC /* RegisterModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D30EA7F5294D8AAB00F65FFC /* RegisterModel.swift */; };
 		D33B4E5529490D9C00927435 /* R.generated.swift in Sources */ = {isa = PBXBuildFile; fileRef = D33B4E5429490D9C00927435 /* R.generated.swift */; };
 		D33B4E5729490DAD00927435 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = D33B4E5629490DAD00927435 /* Localizable.strings */; };
 		D33B4E592949112E00927435 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = D33B4E582949112E00927435 /* GoogleService-Info.plist */; };
@@ -16,6 +19,8 @@
 		D36059EA2948E39D009DA1D6 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D36059E92948E39D009DA1D6 /* ViewController.swift */; };
 		D36059EF2948E39F009DA1D6 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D36059EE2948E39F009DA1D6 /* Assets.xcassets */; };
 		D36059F22948E39F009DA1D6 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D36059F02948E39F009DA1D6 /* LaunchScreen.storyboard */; };
+		D3924A83294C3CBF00FEF1E5 /* RegisterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3924A82294C3CBF00FEF1E5 /* RegisterViewController.swift */; };
+		D3924A85294C3CD000FEF1E5 /* RegisterUIView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3924A84294C3CD000FEF1E5 /* RegisterUIView.swift */; };
 		D3D09ECC294A430E00B1CC02 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3D09ECB294A430E00B1CC02 /* LoginViewController.swift */; };
 		D3D09ECE294A431C00B1CC02 /* LoginUIView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3D09ECD294A431C00B1CC02 /* LoginUIView.swift */; };
 		D3D09ED0294B102500B1CC02 /* LoginModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3D09ECF294B102500B1CC02 /* LoginModel.swift */; };
@@ -28,6 +33,9 @@
 		39615C72087CD1271E826DF8 /* Pods_messenger.framework */ = {isa = PBXFileReference; explicitFileType = wrapper.framework; includeInIndex = 0; path = Pods_messenger.framework; sourceTree = BUILT_PRODUCTS_DIR; };
 		A44AB5D66E579DF68AD3CF74 /* Pods-messenger.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-messenger.release.xcconfig"; path = "Target Support Files/Pods-messenger/Pods-messenger.release.xcconfig"; sourceTree = "<group>"; };
 		B78441EA61B4BF3745C161A5 /* Pods-messenger.debug.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = "Pods-messenger.debug.xcconfig"; path = "Target Support Files/Pods-messenger/Pods-messenger.debug.xcconfig"; sourceTree = "<group>"; };
+		D30EA7F1294D7EDC00F65FFC /* DatabaseManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DatabaseManager.swift; sourceTree = "<group>"; };
+		D30EA7F3294D8A7600F65FFC /* RegisterPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterPresenter.swift; sourceTree = "<group>"; };
+		D30EA7F5294D8AAB00F65FFC /* RegisterModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterModel.swift; sourceTree = "<group>"; };
 		D33B4E5429490D9C00927435 /* R.generated.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = R.generated.swift; sourceTree = "<group>"; };
 		D33B4E5629490DAD00927435 /* Localizable.strings */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; path = Localizable.strings; sourceTree = "<group>"; };
 		D33B4E582949112E00927435 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
@@ -38,6 +46,8 @@
 		D36059EE2948E39F009DA1D6 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		D36059F12948E39F009DA1D6 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		D36059F32948E39F009DA1D6 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		D3924A82294C3CBF00FEF1E5 /* RegisterViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterViewController.swift; sourceTree = "<group>"; };
+		D3924A84294C3CD000FEF1E5 /* RegisterUIView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterUIView.swift; sourceTree = "<group>"; };
 		D3D09ECB294A430E00B1CC02 /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
 		D3D09ECD294A431C00B1CC02 /* LoginUIView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginUIView.swift; sourceTree = "<group>"; };
 		D3D09ECF294B102500B1CC02 /* LoginModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginModel.swift; sourceTree = "<group>"; };
@@ -75,6 +85,14 @@
 			path = Pods;
 			sourceTree = "<group>";
 		};
+		D30EA7F0294D7EC900F65FFC /* DatabaseManager */ = {
+			isa = PBXGroup;
+			children = (
+				D30EA7F1294D7EDC00F65FFC /* DatabaseManager.swift */,
+			);
+			path = DatabaseManager;
+			sourceTree = "<group>";
+		};
 		D36059D92948E39D009DA1D6 = {
 			isa = PBXGroup;
 			children = (
@@ -97,6 +115,7 @@
 			isa = PBXGroup;
 			children = (
 				D36059F92949012A009DA1D6 /* Common */,
+				D3924A81294C3CA600FEF1E5 /* Register */,
 				D3D09ECA294A42EF00B1CC02 /* Login */,
 				D36059E92948E39D009DA1D6 /* ViewController.swift */,
 			);
@@ -106,6 +125,7 @@
 		D36059F92949012A009DA1D6 /* Common */ = {
 			isa = PBXGroup;
 			children = (
+				D30EA7F0294D7EC900F65FFC /* DatabaseManager */,
 				D3D09ED5294B139100B1CC02 /* URLSessionFacade */,
 				D36059FA2949014A009DA1D6 /* Resources */,
 				D36059E52948E39D009DA1D6 /* AppDelegate.swift */,
@@ -125,6 +145,17 @@
 				D33B4E5629490DAD00927435 /* Localizable.strings */,
 			);
 			path = Resources;
+			sourceTree = "<group>";
+		};
+		D3924A81294C3CA600FEF1E5 /* Register */ = {
+			isa = PBXGroup;
+			children = (
+				D3924A82294C3CBF00FEF1E5 /* RegisterViewController.swift */,
+				D3924A84294C3CD000FEF1E5 /* RegisterUIView.swift */,
+				D30EA7F3294D8A7600F65FFC /* RegisterPresenter.swift */,
+				D30EA7F5294D8AAB00F65FFC /* RegisterModel.swift */,
+			);
+			path = Register;
 			sourceTree = "<group>";
 		};
 		D3D09ECA294A42EF00B1CC02 /* Login */ = {
@@ -285,6 +316,9 @@
 			buildActionMask = 2147483647;
 			files = (
 				D3D09ECE294A431C00B1CC02 /* LoginUIView.swift in Sources */,
+				D3924A83294C3CBF00FEF1E5 /* RegisterViewController.swift in Sources */,
+				D30EA7F4294D8A7600F65FFC /* RegisterPresenter.swift in Sources */,
+				D30EA7F2294D7EDC00F65FFC /* DatabaseManager.swift in Sources */,
 				D3D09ED0294B102500B1CC02 /* LoginModel.swift in Sources */,
 				D36059EA2948E39D009DA1D6 /* ViewController.swift in Sources */,
 				D36059E62948E39D009DA1D6 /* AppDelegate.swift in Sources */,
@@ -292,6 +326,8 @@
 				D36059E82948E39D009DA1D6 /* SceneDelegate.swift in Sources */,
 				D3D09ECC294A430E00B1CC02 /* LoginViewController.swift in Sources */,
 				D33B4E5529490D9C00927435 /* R.generated.swift in Sources */,
+				D30EA7F6294D8AAB00F65FFC /* RegisterModel.swift in Sources */,
+				D3924A85294C3CD000FEF1E5 /* RegisterUIView.swift in Sources */,
 				D3D09ED9294B145300B1CC02 /* CustomError.swift in Sources */,
 				D3D09ED7294B142D00B1CC02 /* APIRequest.swift in Sources */,
 			);

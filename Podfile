@@ -8,6 +8,8 @@ target 'messenger' do
   pod 'R.swift'
   pod 'FirebaseAuth'
   pod 'FirebaseFirestore'
+  pod 'FirebaseDatabase'
+  pod 'FirebaseMessaging'
 
   # Pods for messenger
 
