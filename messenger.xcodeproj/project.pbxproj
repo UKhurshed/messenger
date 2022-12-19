@@ -28,6 +28,8 @@
 		D36059F22948E39F009DA1D6 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D36059F02948E39F009DA1D6 /* LaunchScreen.storyboard */; };
 		D383A4E22950627400DA6319 /* UserDefaultsKeysConstant.swift in Sources */ = {isa = PBXBuildFile; fileRef = D383A4E12950627400DA6319 /* UserDefaultsKeysConstant.swift */; };
 		D383A4E529506C2900DA6319 /* SearchResult.swift in Sources */ = {isa = PBXBuildFile; fileRef = D383A4E429506C2900DA6319 /* SearchResult.swift */; };
+		D383A4E82950789300DA6319 /* PhotoViewerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D383A4E72950789300DA6319 /* PhotoViewerViewController.swift */; };
+		D383A4EA295078AF00DA6319 /* PhotoViewerUIView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D383A4E9295078AF00DA6319 /* PhotoViewerUIView.swift */; };
 		D3924A83294C3CBF00FEF1E5 /* RegisterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3924A82294C3CBF00FEF1E5 /* RegisterViewController.swift */; };
 		D3924A85294C3CD000FEF1E5 /* RegisterUIView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3924A84294C3CD000FEF1E5 /* RegisterUIView.swift */; };
 		D3D09ECC294A430E00B1CC02 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3D09ECB294A430E00B1CC02 /* LoginViewController.swift */; };
@@ -64,6 +66,8 @@
 		D36059F32948E39F009DA1D6 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		D383A4E12950627400DA6319 /* UserDefaultsKeysConstant.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserDefaultsKeysConstant.swift; sourceTree = "<group>"; };
 		D383A4E429506C2900DA6319 /* SearchResult.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchResult.swift; sourceTree = "<group>"; };
+		D383A4E72950789300DA6319 /* PhotoViewerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoViewerViewController.swift; sourceTree = "<group>"; };
+		D383A4E9295078AF00DA6319 /* PhotoViewerUIView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoViewerUIView.swift; sourceTree = "<group>"; };
 		D3924A82294C3CBF00FEF1E5 /* RegisterViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterViewController.swift; sourceTree = "<group>"; };
 		D3924A84294C3CD000FEF1E5 /* RegisterUIView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterUIView.swift; sourceTree = "<group>"; };
 		D3D09ECB294A430E00B1CC02 /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
@@ -189,8 +193,9 @@
 				D3924A81294C3CA600FEF1E5 /* Register */,
 				D3D09ECA294A42EF00B1CC02 /* Login */,
 				D30EA7F7294DFF1000F65FFC /* Main */,
-				D30EA800294E10D400F65FFC /* NewConversation */,
 				D30EA7FD294E02A900F65FFC /* Chat */,
+				D30EA800294E10D400F65FFC /* NewConversation */,
+				D383A4E62950786800DA6319 /* PhotoViewer */,
 			);
 			path = messenger;
 			sourceTree = "<group>";
@@ -236,6 +241,15 @@
 				D383A4E429506C2900DA6319 /* SearchResult.swift */,
 			);
 			path = Model;
+			sourceTree = "<group>";
+		};
+		D383A4E62950786800DA6319 /* PhotoViewer */ = {
+			isa = PBXGroup;
+			children = (
+				D383A4E72950789300DA6319 /* PhotoViewerViewController.swift */,
+				D383A4E9295078AF00DA6319 /* PhotoViewerUIView.swift */,
+			);
+			path = PhotoViewer;
 			sourceTree = "<group>";
 		};
 		D3924A81294C3CA600FEF1E5 /* Register */ = {
@@ -408,10 +422,12 @@
 			files = (
 				D3D09ECE294A431C00B1CC02 /* LoginUIView.swift in Sources */,
 				D3924A83294C3CBF00FEF1E5 /* RegisterViewController.swift in Sources */,
+				D383A4E82950789300DA6319 /* PhotoViewerViewController.swift in Sources */,
 				D30EA7F4294D8A7600F65FFC /* RegisterPresenter.swift in Sources */,
 				D30EA7F2294D7EDC00F65FFC /* DatabaseManager.swift in Sources */,
 				D30EA804294E111D00F65FFC /* NewConversationUIView.swift in Sources */,
 				D3D09ED0294B102500B1CC02 /* LoginModel.swift in Sources */,
+				D383A4EA295078AF00DA6319 /* PhotoViewerUIView.swift in Sources */,
 				D36059EA2948E39D009DA1D6 /* MainViewController.swift in Sources */,
 				D30EA7FC294DFFB900F65FFC /* MainTableViewCell.swift in Sources */,
 				D36059E62948E39D009DA1D6 /* AppDelegate.swift in Sources */,
