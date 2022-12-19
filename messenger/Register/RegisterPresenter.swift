@@ -37,6 +37,10 @@ class RegisterPresenter: RegisterViewInput {
                 strongSelf.viewContoller?.showError(errorDescription: error?.localizedDescription ?? "Error occurred")
                 return
             }
+            
+            UserDefaults.standard.setValue(request.email, forKey: "email")
+            UserDefaults.standard.setValue("\(request.firstName) \(request.lastName)", forKey: "name")
+            
             let chatUser = ChatUser(
                 firstName: request.firstName,
                 lastName: request.lastName,

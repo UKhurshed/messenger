@@ -29,6 +29,7 @@ class NewConversationUIView: UIView {
         backgroundColor = .white
         initSearchBar()
         initTableView()
+        initNoResults()
     }
     
     private func initSearchBar() {
@@ -59,12 +60,16 @@ class NewConversationUIView: UIView {
     private func initNoResults() {
         noResults.translatesAutoresizingMaskIntoConstraints = false
         noResults.text = "No Results"
-        noResults.isHidden = true
         noResults.textAlignment = .center
         noResults.textColor = .green
         noResults.font = .systemFont(ofSize: 21, weight: .medium)
         
         addSubview(noResults)
+        noResults.snp.makeConstraints { makeNoResult in
+            makeNoResult.top.equalToSuperview().offset(150)
+            makeNoResult.left.equalToSuperview()
+            makeNoResult.right.equalToSuperview()
+        }
     }
     
     required init?(coder: NSCoder) {

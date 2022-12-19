@@ -65,6 +65,7 @@ class ConversationsViewController: UIViewController {
     }
     
     @objc private func tapCompose() {
+        print("tapCompose")
         let vc = NewConversationViewController()
         vc.completion = { [weak self] result in
             guard let strongSelf = self else {
@@ -72,7 +73,7 @@ class ConversationsViewController: UIViewController {
             }
 
             let currentConversations = strongSelf.conversations
-
+            print("result: \(result)")
             if let targetConversation = currentConversations.first(where: {
                 $0.otherUserEmail == DatabaseManager.safeEmail(emailAddress: result.email)
             }) {
@@ -86,6 +87,8 @@ class ConversationsViewController: UIViewController {
                 strongSelf.createNewConversation(result: result)
             }
         }
+        let navVC = UINavigationController(rootViewController: vc)
+        present(navVC, animated: true)
     }
     
     private func createNewConversation(result: SearchResult) {

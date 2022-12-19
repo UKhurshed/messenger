@@ -63,19 +63,32 @@ extension NewConversationViewController: NewConversationUIViewDelegate {
             DatabaseManager.shared.getAllUsers(completion: { [weak self] result in
                 switch result {
                 case .success(let usersCollection):
+                    print("userCollection: \(usersCollection)")
                     self?.hasFetched = true
                     self?.users = usersCollection
                     self?.filterUsers(with: query)
                 case .failure(let error):
                     print("Failed to get usres: \(error)")
+                    self?.newConversationUIView.stopSpinner()
+                    self?.showError(errorDescription: error.localizedDescription)
                 }
             })
         }
     }
     
+    func showError(errorDescription: String) {
+        DispatchQueue.main.async {
+            let alert  = UIAlertController(title: R.string.localizable.errorLabel(), message: errorDescription, preferredStyle: .alert)
+            alert.addAction(UIAlertAction(title: R.string.localizable.alertDismiss(), style: .cancel, handler: nil))
+            self.present(alert, animated: true)
+        }
+    }
+    
     func filterUsers(with term: String) {
         // update the UI: eitehr show results or show no results label
+        print("hasFetched: \(hasFetched)")
         guard let currentUserEmail = UserDefaults.standard.value(forKey: "email") as? String, hasFetched else {
+            newConversationUIView.stopSpinner()
             return
         }
 
@@ -102,13 +115,15 @@ extension NewConversationViewController: NewConversationUIViewDelegate {
 
             return SearchResult(name: name, email: email)
         })
-
+        print("result: \(results)")
         self.results = results
+        newConversationUIView.setupTableViewData(results: results)
 
         updateUI()
     }
     
     func updateUI() {
+        print("updateUI")
         if results.isEmpty {
             newConversationUIView.emptyResult()
         }
