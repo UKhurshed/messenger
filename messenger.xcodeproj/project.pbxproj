@@ -30,6 +30,8 @@
 		D383A4E529506C2900DA6319 /* SearchResult.swift in Sources */ = {isa = PBXBuildFile; fileRef = D383A4E429506C2900DA6319 /* SearchResult.swift */; };
 		D383A4E82950789300DA6319 /* PhotoViewerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D383A4E72950789300DA6319 /* PhotoViewerViewController.swift */; };
 		D383A4EA295078AF00DA6319 /* PhotoViewerUIView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D383A4E9295078AF00DA6319 /* PhotoViewerUIView.swift */; };
+		D383A4ED29507B4F00DA6319 /* LocationPickerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D383A4EC29507B4F00DA6319 /* LocationPickerViewController.swift */; };
+		D383A4EF29507B5D00DA6319 /* LocationPickerUIView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D383A4EE29507B5D00DA6319 /* LocationPickerUIView.swift */; };
 		D3924A83294C3CBF00FEF1E5 /* RegisterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3924A82294C3CBF00FEF1E5 /* RegisterViewController.swift */; };
 		D3924A85294C3CD000FEF1E5 /* RegisterUIView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3924A84294C3CD000FEF1E5 /* RegisterUIView.swift */; };
 		D3D09ECC294A430E00B1CC02 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3D09ECB294A430E00B1CC02 /* LoginViewController.swift */; };
@@ -68,6 +70,8 @@
 		D383A4E429506C2900DA6319 /* SearchResult.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchResult.swift; sourceTree = "<group>"; };
 		D383A4E72950789300DA6319 /* PhotoViewerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoViewerViewController.swift; sourceTree = "<group>"; };
 		D383A4E9295078AF00DA6319 /* PhotoViewerUIView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoViewerUIView.swift; sourceTree = "<group>"; };
+		D383A4EC29507B4F00DA6319 /* LocationPickerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationPickerViewController.swift; sourceTree = "<group>"; };
+		D383A4EE29507B5D00DA6319 /* LocationPickerUIView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationPickerUIView.swift; sourceTree = "<group>"; };
 		D3924A82294C3CBF00FEF1E5 /* RegisterViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterViewController.swift; sourceTree = "<group>"; };
 		D3924A84294C3CD000FEF1E5 /* RegisterUIView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterUIView.swift; sourceTree = "<group>"; };
 		D3D09ECB294A430E00B1CC02 /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
@@ -194,6 +198,7 @@
 				D3D09ECA294A42EF00B1CC02 /* Login */,
 				D30EA7F7294DFF1000F65FFC /* Main */,
 				D30EA7FD294E02A900F65FFC /* Chat */,
+				D383A4EB29507B3300DA6319 /* LocationPicker */,
 				D30EA800294E10D400F65FFC /* NewConversation */,
 				D383A4E62950786800DA6319 /* PhotoViewer */,
 			);
@@ -250,6 +255,15 @@
 				D383A4E9295078AF00DA6319 /* PhotoViewerUIView.swift */,
 			);
 			path = PhotoViewer;
+			sourceTree = "<group>";
+		};
+		D383A4EB29507B3300DA6319 /* LocationPicker */ = {
+			isa = PBXGroup;
+			children = (
+				D383A4EC29507B4F00DA6319 /* LocationPickerViewController.swift */,
+				D383A4EE29507B5D00DA6319 /* LocationPickerUIView.swift */,
+			);
+			path = LocationPicker;
 			sourceTree = "<group>";
 		};
 		D3924A81294C3CA600FEF1E5 /* Register */ = {
@@ -421,6 +435,7 @@
 			buildActionMask = 2147483647;
 			files = (
 				D3D09ECE294A431C00B1CC02 /* LoginUIView.swift in Sources */,
+				D383A4EF29507B5D00DA6319 /* LocationPickerUIView.swift in Sources */,
 				D3924A83294C3CBF00FEF1E5 /* RegisterViewController.swift in Sources */,
 				D383A4E82950789300DA6319 /* PhotoViewerViewController.swift in Sources */,
 				D30EA7F4294D8A7600F65FFC /* RegisterPresenter.swift in Sources */,
@@ -430,6 +445,7 @@
 				D383A4EA295078AF00DA6319 /* PhotoViewerUIView.swift in Sources */,
 				D36059EA2948E39D009DA1D6 /* MainViewController.swift in Sources */,
 				D30EA7FC294DFFB900F65FFC /* MainTableViewCell.swift in Sources */,
+				D383A4ED29507B4F00DA6319 /* LocationPickerViewController.swift in Sources */,
 				D36059E62948E39D009DA1D6 /* AppDelegate.swift in Sources */,
 				D3D09EDB294B233A00B1CC02 /* LoginPresenter.swift in Sources */,
 				D383A4E529506C2900DA6319 /* SearchResult.swift in Sources */,

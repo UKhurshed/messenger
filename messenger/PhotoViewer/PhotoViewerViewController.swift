@@ -11,7 +11,7 @@ class PhotoViewerViewController: UIViewController {
     
     private let url: URL
     
-    init(with url: UR) {
+    init(with url: URL) {
         self.url = url
         super.init(nibName: nil, bundle: nil)
     }
