@@ -133,7 +133,7 @@ extension RegisterViewController: RegisterDisplayLogic {
     func success(viewModel: User) {
         print("viewModel: \(viewModel)")
         DispatchQueue.main.async {
-            let vc = MainViewController()
+            let vc = ConversationsViewController()
             vc.modalPresentationStyle = .fullScreen
             self.present(vc, animated: true)
         }

@@ -25,6 +25,20 @@ class ChatViewController: MessagesViewController {
     
     private var messages = [Message]()
     
+    private var conversationId: String?
+    public var isNewConversation = false
+    public let otherUserEmail: String
+    
+    init(with email: String, id: String?) {
+        self.conversationId = id
+        self.otherUserEmail = email
+        super.init(nibName: nil, bundle: nil)
+    }
+
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
+    
     private let selfSender = Sender(
         photoURL: "",
         senderId: "1",

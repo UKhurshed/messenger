@@ -31,7 +31,7 @@ class NewConversationTableViewCell: UITableViewCell {
         mainBackground.translatesAutoresizingMaskIntoConstraints = false
         mainBackground.backgroundColor = .white
         
-        addSubview(mainBackground)
+        contentView.addSubview(mainBackground)
         mainBackground.snp.makeConstraints { makeMainBack in
             makeMainBack.top.equalToSuperview()
             makeMainBack.left.equalToSuperview()

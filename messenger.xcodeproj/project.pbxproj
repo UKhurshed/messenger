@@ -11,8 +11,8 @@
 		D30EA7F2294D7EDC00F65FFC /* DatabaseManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = D30EA7F1294D7EDC00F65FFC /* DatabaseManager.swift */; };
 		D30EA7F4294D8A7600F65FFC /* RegisterPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = D30EA7F3294D8A7600F65FFC /* RegisterPresenter.swift */; };
 		D30EA7F6294D8AAB00F65FFC /* RegisterModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = D30EA7F5294D8AAB00F65FFC /* RegisterModel.swift */; };
-		D30EA7F9294DFF3600F65FFC /* MainUIView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D30EA7F8294DFF3600F65FFC /* MainUIView.swift */; };
-		D30EA7FC294DFFB900F65FFC /* MainTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D30EA7FB294DFFB900F65FFC /* MainTableViewCell.swift */; };
+		D30EA7F9294DFF3600F65FFC /* ConversationsUIView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D30EA7F8294DFF3600F65FFC /* ConversationsUIView.swift */; };
+		D30EA7FC294DFFB900F65FFC /* ConversationsTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D30EA7FB294DFFB900F65FFC /* ConversationsTableViewCell.swift */; };
 		D30EA7FF294E02C100F65FFC /* ChatViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D30EA7FE294E02C100F65FFC /* ChatViewController.swift */; };
 		D30EA802294E10FC00F65FFC /* NewConversationViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D30EA801294E10FC00F65FFC /* NewConversationViewController.swift */; };
 		D30EA804294E111D00F65FFC /* NewConversationUIView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D30EA803294E111D00F65FFC /* NewConversationUIView.swift */; };
@@ -23,7 +23,7 @@
 		D33B4E592949112E00927435 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = D33B4E582949112E00927435 /* GoogleService-Info.plist */; };
 		D36059E62948E39D009DA1D6 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D36059E52948E39D009DA1D6 /* AppDelegate.swift */; };
 		D36059E82948E39D009DA1D6 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D36059E72948E39D009DA1D6 /* SceneDelegate.swift */; };
-		D36059EA2948E39D009DA1D6 /* MainViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D36059E92948E39D009DA1D6 /* MainViewController.swift */; };
+		D36059EA2948E39D009DA1D6 /* ConversationsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D36059E92948E39D009DA1D6 /* ConversationsViewController.swift */; };
 		D36059EF2948E39F009DA1D6 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = D36059EE2948E39F009DA1D6 /* Assets.xcassets */; };
 		D36059F22948E39F009DA1D6 /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D36059F02948E39F009DA1D6 /* LaunchScreen.storyboard */; };
 		D383A4E22950627400DA6319 /* UserDefaultsKeysConstant.swift in Sources */ = {isa = PBXBuildFile; fileRef = D383A4E12950627400DA6319 /* UserDefaultsKeysConstant.swift */; };
@@ -32,6 +32,7 @@
 		D383A4EA295078AF00DA6319 /* PhotoViewerUIView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D383A4E9295078AF00DA6319 /* PhotoViewerUIView.swift */; };
 		D383A4ED29507B4F00DA6319 /* LocationPickerViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D383A4EC29507B4F00DA6319 /* LocationPickerViewController.swift */; };
 		D383A4EF29507B5D00DA6319 /* LocationPickerUIView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D383A4EE29507B5D00DA6319 /* LocationPickerUIView.swift */; };
+		D383A4F82950855700DA6319 /* Conversation.swift in Sources */ = {isa = PBXBuildFile; fileRef = D383A4F72950855700DA6319 /* Conversation.swift */; };
 		D3924A83294C3CBF00FEF1E5 /* RegisterViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3924A82294C3CBF00FEF1E5 /* RegisterViewController.swift */; };
 		D3924A85294C3CD000FEF1E5 /* RegisterUIView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3924A84294C3CD000FEF1E5 /* RegisterUIView.swift */; };
 		D3D09ECC294A430E00B1CC02 /* LoginViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3D09ECB294A430E00B1CC02 /* LoginViewController.swift */; };
@@ -49,8 +50,8 @@
 		D30EA7F1294D7EDC00F65FFC /* DatabaseManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DatabaseManager.swift; sourceTree = "<group>"; };
 		D30EA7F3294D8A7600F65FFC /* RegisterPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterPresenter.swift; sourceTree = "<group>"; };
 		D30EA7F5294D8AAB00F65FFC /* RegisterModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterModel.swift; sourceTree = "<group>"; };
-		D30EA7F8294DFF3600F65FFC /* MainUIView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainUIView.swift; sourceTree = "<group>"; };
-		D30EA7FB294DFFB900F65FFC /* MainTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainTableViewCell.swift; sourceTree = "<group>"; };
+		D30EA7F8294DFF3600F65FFC /* ConversationsUIView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConversationsUIView.swift; sourceTree = "<group>"; };
+		D30EA7FB294DFFB900F65FFC /* ConversationsTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConversationsTableViewCell.swift; sourceTree = "<group>"; };
 		D30EA7FE294E02C100F65FFC /* ChatViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ChatViewController.swift; sourceTree = "<group>"; };
 		D30EA801294E10FC00F65FFC /* NewConversationViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewConversationViewController.swift; sourceTree = "<group>"; };
 		D30EA803294E111D00F65FFC /* NewConversationUIView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NewConversationUIView.swift; sourceTree = "<group>"; };
@@ -62,7 +63,7 @@
 		D36059E22948E39D009DA1D6 /* messenger.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = messenger.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		D36059E52948E39D009DA1D6 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		D36059E72948E39D009DA1D6 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
-		D36059E92948E39D009DA1D6 /* MainViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewController.swift; sourceTree = "<group>"; };
+		D36059E92948E39D009DA1D6 /* ConversationsViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConversationsViewController.swift; sourceTree = "<group>"; };
 		D36059EE2948E39F009DA1D6 /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		D36059F12948E39F009DA1D6 /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		D36059F32948E39F009DA1D6 /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
@@ -72,6 +73,7 @@
 		D383A4E9295078AF00DA6319 /* PhotoViewerUIView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PhotoViewerUIView.swift; sourceTree = "<group>"; };
 		D383A4EC29507B4F00DA6319 /* LocationPickerViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationPickerViewController.swift; sourceTree = "<group>"; };
 		D383A4EE29507B5D00DA6319 /* LocationPickerUIView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationPickerUIView.swift; sourceTree = "<group>"; };
+		D383A4F72950855700DA6319 /* Conversation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Conversation.swift; sourceTree = "<group>"; };
 		D3924A82294C3CBF00FEF1E5 /* RegisterViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterViewController.swift; sourceTree = "<group>"; };
 		D3924A84294C3CD000FEF1E5 /* RegisterUIView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RegisterUIView.swift; sourceTree = "<group>"; };
 		D3D09ECB294A430E00B1CC02 /* LoginViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginViewController.swift; sourceTree = "<group>"; };
@@ -122,9 +124,10 @@
 		D30EA7F7294DFF1000F65FFC /* Main */ = {
 			isa = PBXGroup;
 			children = (
+				D383A4F62950854A00DA6319 /* Models */,
 				D30EA7FA294DFFA000F65FFC /* Cell */,
-				D36059E92948E39D009DA1D6 /* MainViewController.swift */,
-				D30EA7F8294DFF3600F65FFC /* MainUIView.swift */,
+				D36059E92948E39D009DA1D6 /* ConversationsViewController.swift */,
+				D30EA7F8294DFF3600F65FFC /* ConversationsUIView.swift */,
 			);
 			path = Main;
 			sourceTree = "<group>";
@@ -132,7 +135,7 @@
 		D30EA7FA294DFFA000F65FFC /* Cell */ = {
 			isa = PBXGroup;
 			children = (
-				D30EA7FB294DFFB900F65FFC /* MainTableViewCell.swift */,
+				D30EA7FB294DFFB900F65FFC /* ConversationsTableViewCell.swift */,
 			);
 			path = Cell;
 			sourceTree = "<group>";
@@ -197,9 +200,9 @@
 				D3924A81294C3CA600FEF1E5 /* Register */,
 				D3D09ECA294A42EF00B1CC02 /* Login */,
 				D30EA7F7294DFF1000F65FFC /* Main */,
+				D30EA800294E10D400F65FFC /* NewConversation */,
 				D30EA7FD294E02A900F65FFC /* Chat */,
 				D383A4EB29507B3300DA6319 /* LocationPicker */,
-				D30EA800294E10D400F65FFC /* NewConversation */,
 				D383A4E62950786800DA6319 /* PhotoViewer */,
 			);
 			path = messenger;
@@ -264,6 +267,14 @@
 				D383A4EE29507B5D00DA6319 /* LocationPickerUIView.swift */,
 			);
 			path = LocationPicker;
+			sourceTree = "<group>";
+		};
+		D383A4F62950854A00DA6319 /* Models */ = {
+			isa = PBXGroup;
+			children = (
+				D383A4F72950855700DA6319 /* Conversation.swift */,
+			);
+			path = Models;
 			sourceTree = "<group>";
 		};
 		D3924A81294C3CA600FEF1E5 /* Register */ = {
@@ -436,6 +447,7 @@
 			files = (
 				D3D09ECE294A431C00B1CC02 /* LoginUIView.swift in Sources */,
 				D383A4EF29507B5D00DA6319 /* LocationPickerUIView.swift in Sources */,
+				D383A4F82950855700DA6319 /* Conversation.swift in Sources */,
 				D3924A83294C3CBF00FEF1E5 /* RegisterViewController.swift in Sources */,
 				D383A4E82950789300DA6319 /* PhotoViewerViewController.swift in Sources */,
 				D30EA7F4294D8A7600F65FFC /* RegisterPresenter.swift in Sources */,
@@ -443,8 +455,8 @@
 				D30EA804294E111D00F65FFC /* NewConversationUIView.swift in Sources */,
 				D3D09ED0294B102500B1CC02 /* LoginModel.swift in Sources */,
 				D383A4EA295078AF00DA6319 /* PhotoViewerUIView.swift in Sources */,
-				D36059EA2948E39D009DA1D6 /* MainViewController.swift in Sources */,
-				D30EA7FC294DFFB900F65FFC /* MainTableViewCell.swift in Sources */,
+				D36059EA2948E39D009DA1D6 /* ConversationsViewController.swift in Sources */,
+				D30EA7FC294DFFB900F65FFC /* ConversationsTableViewCell.swift in Sources */,
 				D383A4ED29507B4F00DA6319 /* LocationPickerViewController.swift in Sources */,
 				D36059E62948E39D009DA1D6 /* AppDelegate.swift in Sources */,
 				D3D09EDB294B233A00B1CC02 /* LoginPresenter.swift in Sources */,
@@ -452,7 +464,7 @@
 				D30EA802294E10FC00F65FFC /* NewConversationViewController.swift in Sources */,
 				D383A4E22950627400DA6319 /* UserDefaultsKeysConstant.swift in Sources */,
 				D36059E82948E39D009DA1D6 /* SceneDelegate.swift in Sources */,
-				D30EA7F9294DFF3600F65FFC /* MainUIView.swift in Sources */,
+				D30EA7F9294DFF3600F65FFC /* ConversationsUIView.swift in Sources */,
 				D30EA80A294E199200F65FFC /* StorageManager.swift in Sources */,
 				D3D09ECC294A430E00B1CC02 /* LoginViewController.swift in Sources */,
 				D30EA807294E147700F65FFC /* NewConversationTableViewCell.swift in Sources */,
