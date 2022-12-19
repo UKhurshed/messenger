@@ -6,10 +6,13 @@ target 'messenger' do
   use_frameworks!
   pod 'SnapKit', '~> 5.6.0'
   pod 'R.swift'
+
   pod 'FirebaseAuth'
   pod 'FirebaseFirestore'
   pod 'FirebaseDatabase'
   pod 'FirebaseMessaging'
+  pod 'FirebaseStorage'
+
   pod 'MessageKit'
   pod 'JGProgressHUD'
   pod 'SDWebImage'

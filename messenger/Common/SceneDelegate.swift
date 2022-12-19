@@ -25,7 +25,7 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
             let loginVC = UINavigationController(rootViewController: LoginViewController())
             window.rootViewController = loginVC
         } else {
-            let mainVC = UINavigationController(rootViewController: ViewController())
+            let mainVC = UINavigationController(rootViewController: MainViewController())
             window.rootViewController = mainVC
         }
         
