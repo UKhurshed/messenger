@@ -7,6 +7,7 @@
 
 import UIKit
 import SnapKit
+import JGProgressHUD
 
 protocol LogInBtnPressedDelegate: AnyObject {
     func logInAction(emailText: String?, passwordText: String?)
@@ -18,7 +19,7 @@ class LoginUIView: UIView {
     private let emailTextField = UITextField()
     private let passwordTextField = UITextField()
     private let logInBtn = UIButton()
-    private let indicator = UIActivityIndicatorView()
+    private let spinner = JGProgressHUD(style: .dark)
     
     weak var delegate: LogInBtnPressedDelegate?
     
@@ -106,32 +107,16 @@ class LoginUIView: UIView {
         delegate?.logInAction(emailText: emailTextField.text, passwordText: passwordTextField.text)
     }
     
-    private func initIndicator() {
-        indicator.translatesAutoresizingMaskIntoConstraints = false
-        indicator.hidesWhenStopped = true
-        indicator.stopAnimating()
-        
-        addSubview(indicator)
-        indicator.snp.makeConstraints { makeIndicator in
-            makeIndicator.centerX.equalToSuperview()
-            makeIndicator.centerY.equalToSuperview()
-        }
-    }
-    
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
     
-    public func startAnimatingIndicator() {
-        indicator.startAnimating()
+    public func startSpinner() {
+        spinner.show(in: self)
     }
     
-    public func stopAnimatingIndicator() {
-        indicator.stopAnimating()
-    }
-    
-    public func showError() {
-        indicator.stopAnimating()
+    public func stopSpinner() {
+        spinner.dismiss(animated: true)
     }
 }
 

@@ -31,11 +31,11 @@ class LoginPresenter: LoginViewInput {
                 self?.viewContoller?.showError(errorDescription: R.string.localizable.freedReference())
                 return
             }
+            strongSelf.viewContoller?.finishLoading()
             guard let result = authResult, error == nil else {
                 strongSelf.viewContoller?.showError(errorDescription: error?.localizedDescription ?? "")
                 return
             }
-            strongSelf.viewContoller?.finishLoading()
             let user: User = result.user
             strongSelf.viewContoller?.success(viewModel: LoginViewModel(email: user.email ?? "email"))
         }

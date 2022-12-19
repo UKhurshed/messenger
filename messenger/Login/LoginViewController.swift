@@ -61,14 +61,15 @@ extension LoginViewController: LogInBtnPressedDelegate {
 extension LoginViewController: LoginDisplayLogic {
     func success(viewModel: LoginViewModel) {
         print("viewModel: \(viewModel)")
-        let mainVC = ViewController()
-        mainVC.modalPresentationStyle = .fullScreen
-        navigationController?.dismiss(animated: true, completion: nil)
+        DispatchQueue.main.async {
+            let mainVC = MainViewController()
+            mainVC.modalPresentationStyle = .fullScreen
+            self.present(mainVC, animated: true)
+        }
     }
     
     func showError(errorDescription: String) {
         DispatchQueue.main.async {
-            self.loginUIView.showError()
             let alert  = UIAlertController(title: R.string.localizable.errorLabel(), message: errorDescription, preferredStyle: .alert)
             alert.addAction(UIAlertAction(title: R.string.localizable.alertDismiss(), style: .cancel, handler: nil))
             self.present(alert, animated: true)
@@ -77,13 +78,13 @@ extension LoginViewController: LoginDisplayLogic {
     
     func startLoading() {
         DispatchQueue.main.async {
-            self.loginUIView.startAnimatingIndicator()
+            self.loginUIView.startSpinner()
         }
     }
     
     func finishLoading() {
         DispatchQueue.main.async {
-            self.loginUIView.stopAnimatingIndicator()
+            self.loginUIView.stopSpinner()
         }
     }
 }
