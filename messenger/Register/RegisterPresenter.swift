@@ -32,14 +32,36 @@ class RegisterPresenter: RegisterViewInput {
                 self?.viewContoller?.showError(errorDescription: R.string.localizable.freedReference())
                 return
             }
+            strongSelf.viewContoller?.finishLoading()
             guard let result = authResult, error == nil else {
                 strongSelf.viewContoller?.showError(errorDescription: error?.localizedDescription ?? "Error occurred")
                 return
             }
-            DatabaseManager.shared.insertUser(with: ChatUser(
+            let chatUser = ChatUser(
                 firstName: request.firstName,
-                secondName: request.lastName,
-                emailAddress: request.email))
+                lastName: request.lastName,
+                emailAddress: request.lastName)
+            
+            DatabaseManager.shared.insertUser(with: chatUser) { success in
+                    if success {
+                        guard let image = request.profileImage, let data = image.pngData() else {
+                            strongSelf.viewContoller?.showError(errorDescription: "Image doesn't exists")
+                            return
+                        }
+                        
+                        let fileName = chatUser.profilePictureFileName
+                        StorageManager.shared.uploadProfilePicture(
+                            with: data, fileName: fileName) { result in
+                                switch result {
+                                case .success(let downloadURL):
+                                    print("downloadURL: \(downloadURL)")
+                                    UserDefaults.standard.set(downloadURL, forKey: UserDefaultsKeysConstant.downloadURL)
+                                case .failure(let error):
+                                    strongSelf.viewContoller?.showError(errorDescription: error.localizedDescription)
+                                }
+                        }
+                    }
+                }
             let user: User = result.user
             strongSelf.viewContoller?.success(viewModel: user)
             print("user: \(user)")

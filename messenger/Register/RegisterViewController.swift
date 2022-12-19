@@ -53,7 +53,7 @@ extension RegisterViewController: RegisterUIViewDelegate {
                 self?.showWarningAlert(message: "Looks like a account for that email address already exists")
                 return
             }
-            self?.presenterInput.createAccount(request: RegisterRequest(firstName: firstName, lastName: lastName, email: email, password: password))
+            self?.presenterInput.createAccount(request: RegisterRequest(firstName: firstName, lastName: lastName, email: email, password: password, profileImage: self?.registerUIView.getLastImage()))
         }
     }
     
@@ -132,12 +132,15 @@ extension RegisterViewController: UIImagePickerControllerDelegate, UINavigationC
 extension RegisterViewController: RegisterDisplayLogic {
     func success(viewModel: User) {
         print("viewModel: \(viewModel)")
-        navigationController?.dismiss(animated: true, completion: nil)
+        DispatchQueue.main.async {
+            let vc = MainViewController()
+            vc.modalPresentationStyle = .fullScreen
+            self.present(vc, animated: true)
+        }
     }
     
     func showError(errorDescription: String) {
         DispatchQueue.main.async {
-            self.registerUIView.showError()
             let alert  = UIAlertController(title: R.string.localizable.errorLabel(), message: errorDescription, preferredStyle: .alert)
             alert.addAction(UIAlertAction(title: R.string.localizable.alertDismiss(), style: .cancel, handler: nil))
             self.present(alert, animated: true)
@@ -146,13 +149,13 @@ extension RegisterViewController: RegisterDisplayLogic {
     
     func startLoading() {
         DispatchQueue.main.async {
-            self.registerUIView.startAnimatingIndicator()
+            self.registerUIView.startSpinner()
         }
     }
     
     func finishLoading() {
         DispatchQueue.main.async {
-            self.registerUIView.stopAnimatingIndicator()
+            self.registerUIView.stopSpinner()
         }
     }
 }

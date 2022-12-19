@@ -6,6 +6,7 @@
 //
 
 import UIKit
+import JGProgressHUD
 
 protocol RegisterUIViewDelegate: AnyObject {
     func registerTapped(firstName: String?, lastName: String?, email: String?, password: String?)
@@ -20,7 +21,7 @@ class RegisterUIView: UIView {
     private let emailTextField = UITextField()
     private let passwordTextField = UITextField()
     private let registerBtn = UIButton()
-    private let indicator = UIActivityIndicatorView()
+    private let spinner = JGProgressHUD(style: .dark)
     
     weak var delegate: RegisterUIViewDelegate?
 
@@ -41,7 +42,7 @@ class RegisterUIView: UIView {
         logo.contentMode = .scaleAspectFit
         logo.isUserInteractionEnabled = true
         logo.layer.masksToBounds = true
-        logo.layer.cornerRadius = 50
+        logo.layer.cornerRadius = 60
         logo.layer.borderWidth = 2
         logo.layer.borderColor = UIColor.lightGray.cgColor
         let tap = UITapGestureRecognizer()
@@ -50,10 +51,10 @@ class RegisterUIView: UIView {
         
         addSubview(logo)
         logo.snp.makeConstraints { makeLogo in
-            makeLogo.top.equalToSuperview().offset(70)
+            makeLogo.top.equalToSuperview().offset(90)
             makeLogo.centerX.equalToSuperview()
-            makeLogo.height.equalTo(100)
-            makeLogo.width.equalTo(100)
+            makeLogo.height.equalTo(90)
+            makeLogo.width.equalTo(90)
         }
     }
     
@@ -74,7 +75,7 @@ class RegisterUIView: UIView {
         
         addSubview(firstNameField)
         firstNameField.snp.makeConstraints { makeFirst in
-            makeFirst.top.equalTo(logo.snp.bottom).offset(30)
+            makeFirst.top.equalTo(logo.snp.bottom).offset(25)
             makeFirst.left.equalToSuperview().offset(30)
             makeFirst.right.equalToSuperview().offset(-30)
             makeFirst.height.equalTo(50)
@@ -175,20 +176,20 @@ class RegisterUIView: UIView {
         fatalError("init(coder:) has not been implemented")
     }
     
-    public func startAnimatingIndicator() {
-        indicator.startAnimating()
+    public func startSpinner() {
+        spinner.show(in: self)
     }
     
-    public func stopAnimatingIndicator() {
-        indicator.stopAnimating()
-    }
-    
-    public func showError() {
-        indicator.stopAnimating()
+    public func stopSpinner() {
+        spinner.dismiss(animated: true)
     }
     
     public func setupNewIconImage(image: UIImage) {
         logo.image = image
+    }
+    
+    public func getLastImage() -> UIImage? {
+        return logo.image
     }
 }
 

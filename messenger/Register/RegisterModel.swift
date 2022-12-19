@@ -5,7 +5,7 @@
 //  Created by Khurshed Umarov on 17.12.2022.
 //
 
-import Foundation
+import UIKit
 
 typealias RegisterRequest = Register.ByEmailAndPassword.Request
 typealias RegisterResponse = Register.ByEmailAndPassword.Response
@@ -19,6 +19,7 @@ enum Register {
             let lastName: String
             let email: String
             let password: String
+            let profileImage: UIImage?
         }
         
         struct Response {
