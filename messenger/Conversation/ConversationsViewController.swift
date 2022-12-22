@@ -59,7 +59,7 @@ class ConversationsViewController: UIViewController {
                 self?.conversationsUIView.setupData(conversation: conversations)
             case .failure(let error):
                 self?.conversationsUIView.showError()
-                print("failed to get convos: \(error)")
+                print("failed to get convos: \(error.localizedDescription)")
             }
         })
     }

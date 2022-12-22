@@ -44,7 +44,7 @@ class RegisterPresenter: RegisterViewInput {
             let chatUser = ChatUser(
                 firstName: request.firstName,
                 lastName: request.lastName,
-                emailAddress: request.lastName)
+                emailAddress: request.email)
             
             DatabaseManager.shared.insertUser(with: chatUser) { success in
                     if success {

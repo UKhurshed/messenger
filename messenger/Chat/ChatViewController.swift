@@ -26,9 +26,7 @@ class ChatViewController: MessagesViewController {
     
     public static let dateFormatter: DateFormatter = {
         let formatter = DateFormatter()
-        formatter.dateStyle = .medium
-        formatter.timeStyle = .long
-        formatter.locale = .current
+        formatter.dateFormat = "yyyy-MM-dd HH:mm:ss"
         return formatter
     }()
     

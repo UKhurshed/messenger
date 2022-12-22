@@ -318,7 +318,7 @@ extension DatabaseManager {
                 "latest_message": [
                     "date": dateString,
                     "message": message,
-                    "is_read": "false"
+                    "is_read": false
                 ]
             ]
 
@@ -329,7 +329,7 @@ extension DatabaseManager {
                 "latest_message": [
                     "date": dateString,
                     "message": message,
-                    "is_read": "false"
+                    "is_read": false
                 ]
             ]
             // Update recipient conversaiton entry
