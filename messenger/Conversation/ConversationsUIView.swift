@@ -82,6 +82,14 @@ class ConversationsUIView: UIView {
         tableView.isHidden = true
         noConservationLabel.isHidden = false
     }
+    
+    public func showSpinner() {
+        spinner.show(in: self)
+    }
+    
+    public func stopSpinner() {
+        spinner.dismiss(animated: true)
+    }
 }
 
 extension ConversationsUIView: UITableViewDataSource {

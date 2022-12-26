@@ -25,18 +25,20 @@ class ConversationsViewController: UIViewController {
         conversationsUIView.delegate = self
         navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .compose, target: self, action: #selector(tapCompose))
         
-        startListeningForCOnversations()
+        startListeningForConversations()
         loginObserver = NotificationCenter.default.addObserver(forName: .none, object: nil, queue: .main, using: { [weak self] _ in
             guard let strongSelf = self else {
                 return
             }
 
-            strongSelf.startListeningForCOnversations()
+            strongSelf.startListeningForConversations()
         })
     }
     
-    private func startListeningForCOnversations() {
+    private func startListeningForConversations() {
+        conversationsUIView.showSpinner()
         guard let email = UserDefaults.standard.value(forKey: "email") as? String else {
+            conversationsUIView.stopSpinner()
             return
         }
 
@@ -52,12 +54,14 @@ class ConversationsViewController: UIViewController {
             switch result {
             case .success(let conversations):
                 print("successfully got conversation models")
+                self?.conversationsUIView.stopSpinner()
                 guard !conversations.isEmpty else {
                     self?.conversationsUIView.emptyConversation()
                     return
                 }
                 self?.conversationsUIView.setupData(conversation: conversations)
             case .failure(let error):
+                self?.conversationsUIView.stopSpinner()
                 self?.conversationsUIView.showError()
                 print("failed to get convos: \(error.localizedDescription)")
             }

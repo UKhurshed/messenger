@@ -12,17 +12,18 @@ import InputBarAccessoryView
 import SDWebImage
 import AVKit
 import CoreLocation
+import JGProgressHUD
 
 class ChatViewController: MessagesViewController {
     
+    private let spinner = JGProgressHUD(style: .dark)
     private var messages = [Message]()
-    
     private var conversationId: String?
-    public var isNewConversation = false
-    public let otherUserEmail: String
-    
     private var senderPhotoURL: URL?
     private var otherUserPhotoURL: URL?
+    
+    public var isNewConversation = false
+    public let otherUserEmail: String
     
     public static let dateFormatter: DateFormatter = {
         let formatter = DateFormatter()
@@ -226,6 +227,22 @@ class ChatViewController: MessagesViewController {
             listenForMessages(id: conversationId, shouldScrollToBottom: true)
         }
     }
+    
+    private func showSpinner() {
+        spinner.show(in: self.view)
+    }
+    
+    private func stopSpinner() {
+        spinner.dismiss(animated: true)
+    }
+    
+    private func showError(errorDescription: String) {
+        DispatchQueue.main.async {
+            let alert  = UIAlertController(title: R.string.localizable.errorLabel(), message: errorDescription, preferredStyle: .alert)
+            alert.addAction(UIAlertAction(title: R.string.localizable.alertDismiss(), style: .cancel, handler: nil))
+            self.present(alert, animated: true)
+        }
+    }
 }
 
 extension ChatViewController: UIImagePickerControllerDelegate, UINavigationControllerDelegate {
@@ -244,10 +261,12 @@ extension ChatViewController: UIImagePickerControllerDelegate, UINavigationContr
         }
 
         if let image = info[.editedImage] as? UIImage, let imageData =  image.pngData() {
+            showSpinner()
             let fileName = "photo_message_" + messageId.replacingOccurrences(of: " ", with: "-") + ".png"
 
             // Upload image
             StorageManager.shared.uploadMessagePhoto(with: imageData, fileName: fileName, completion: { [weak self] result in
+                self?.stopSpinner()
                 guard let strongSelf = self else {
                     return
                 }
@@ -278,6 +297,7 @@ extension ChatViewController: UIImagePickerControllerDelegate, UINavigationContr
                             print("sent photo message")
                         }
                         else {
+                            self?.showError(errorDescription: "failed to send photo message")
                             print("failed to send photo message")
                         }
 
@@ -285,14 +305,17 @@ extension ChatViewController: UIImagePickerControllerDelegate, UINavigationContr
 
                 case .failure(let error):
                     print("message photo upload error: \(error)")
+                    self?.showError(errorDescription: error.localizedDescription)
                 }
             })
         }
         else if let videoUrl = info[.mediaURL] as? URL {
+            showSpinner()
             let fileName = "photo_message_" + messageId.replacingOccurrences(of: " ", with: "-") + ".mov"
 
             // Upload Video
             StorageManager.shared.uploadMessageVideo(with: videoUrl, fileName: fileName, completion: { [weak self] result in
+                self?.stopSpinner()
                 guard let strongSelf = self else {
                     return
                 }
@@ -324,12 +347,14 @@ extension ChatViewController: UIImagePickerControllerDelegate, UINavigationContr
                         }
                         else {
                             print("failed to send photo message")
+                            self?.showError(errorDescription: "failed to send photo message")
                         }
 
                     })
 
                 case .failure(let error):
                     print("message photo upload error: \(error)")
+                    self?.showError(errorDescription: error.localizedDescription)
                 }
             })
         }

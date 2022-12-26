@@ -21,6 +21,7 @@ class LocationPickerUIView: UIView {
     override init(frame: CGRect) {
         super.init(frame: frame)
         backgroundColor = .systemBackground
+        initMap()
     }
     
     private func initMap() {
