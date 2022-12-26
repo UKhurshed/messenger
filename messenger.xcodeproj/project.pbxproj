@@ -26,6 +26,10 @@
 		D3449B7D295981330049C75D /* ConversationInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3449B7C295981330049C75D /* ConversationInteractor.swift */; };
 		D3449B7F295981BD0049C75D /* ConversationService.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3449B7E295981BD0049C75D /* ConversationService.swift */; };
 		D3449B82295983ED0049C75D /* RealmManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3449B81295983ED0049C75D /* RealmManager.swift */; };
+		D3449B842959A65D0049C75D /* TabBarController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3449B832959A65D0049C75D /* TabBarController.swift */; };
+		D3449B872959A6850049C75D /* ProfileViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3449B862959A6850049C75D /* ProfileViewController.swift */; };
+		D3449B892959A6960049C75D /* ProfileUIView.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3449B882959A6960049C75D /* ProfileUIView.swift */; };
+		D3449B8C2959DD7C0049C75D /* ProfileUTableViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3449B8B2959DD7C0049C75D /* ProfileUTableViewCell.swift */; };
 		D36059E62948E39D009DA1D6 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D36059E52948E39D009DA1D6 /* AppDelegate.swift */; };
 		D36059E82948E39D009DA1D6 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D36059E72948E39D009DA1D6 /* SceneDelegate.swift */; };
 		D36059EA2948E39D009DA1D6 /* ConversationsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D36059E92948E39D009DA1D6 /* ConversationsViewController.swift */; };
@@ -71,6 +75,10 @@
 		D3449B7C295981330049C75D /* ConversationInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConversationInteractor.swift; sourceTree = "<group>"; };
 		D3449B7E295981BD0049C75D /* ConversationService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConversationService.swift; sourceTree = "<group>"; };
 		D3449B81295983ED0049C75D /* RealmManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RealmManager.swift; sourceTree = "<group>"; };
+		D3449B832959A65D0049C75D /* TabBarController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabBarController.swift; sourceTree = "<group>"; };
+		D3449B862959A6850049C75D /* ProfileViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileViewController.swift; sourceTree = "<group>"; };
+		D3449B882959A6960049C75D /* ProfileUIView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileUIView.swift; sourceTree = "<group>"; };
+		D3449B8B2959DD7C0049C75D /* ProfileUTableViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileUTableViewCell.swift; sourceTree = "<group>"; };
 		D36059E22948E39D009DA1D6 /* messenger.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = messenger.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		D36059E52948E39D009DA1D6 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		D36059E72948E39D009DA1D6 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -143,6 +151,7 @@
 				D3449B7A295980660049C75D /* ConversationPresenter.swift */,
 				D3449B7C295981330049C75D /* ConversationInteractor.swift */,
 				D3449B7E295981BD0049C75D /* ConversationService.swift */,
+				D3449B832959A65D0049C75D /* TabBarController.swift */,
 			);
 			path = Conversation;
 			sourceTree = "<group>";
@@ -199,6 +208,24 @@
 			path = RealmManager;
 			sourceTree = "<group>";
 		};
+		D3449B852959A66F0049C75D /* Profile */ = {
+			isa = PBXGroup;
+			children = (
+				D3449B8A2959DD630049C75D /* Cell */,
+				D3449B862959A6850049C75D /* ProfileViewController.swift */,
+				D3449B882959A6960049C75D /* ProfileUIView.swift */,
+			);
+			path = Profile;
+			sourceTree = "<group>";
+		};
+		D3449B8A2959DD630049C75D /* Cell */ = {
+			isa = PBXGroup;
+			children = (
+				D3449B8B2959DD7C0049C75D /* ProfileUTableViewCell.swift */,
+			);
+			path = Cell;
+			sourceTree = "<group>";
+		};
 		D36059D92948E39D009DA1D6 = {
 			isa = PBXGroup;
 			children = (
@@ -226,6 +253,7 @@
 				D30EA7F7294DFF1000F65FFC /* Conversation */,
 				D30EA800294E10D400F65FFC /* NewConversation */,
 				D30EA7FD294E02A900F65FFC /* Chat */,
+				D3449B852959A66F0049C75D /* Profile */,
 				D383A4EB29507B3300DA6319 /* LocationPicker */,
 				D383A4E62950786800DA6319 /* PhotoViewer */,
 			);
@@ -495,13 +523,16 @@
 				D383A4EA295078AF00DA6319 /* PhotoViewerUIView.swift in Sources */,
 				D36059EA2948E39D009DA1D6 /* ConversationsViewController.swift in Sources */,
 				D30EA7FC294DFFB900F65FFC /* ConversationsTableViewCell.swift in Sources */,
+				D3449B892959A6960049C75D /* ProfileUIView.swift in Sources */,
 				D383A4ED29507B4F00DA6319 /* LocationPickerViewController.swift in Sources */,
 				D36059E62948E39D009DA1D6 /* AppDelegate.swift in Sources */,
 				D3D09EDB294B233A00B1CC02 /* LoginPresenter.swift in Sources */,
 				D3449B7D295981330049C75D /* ConversationInteractor.swift in Sources */,
 				D383A4E529506C2900DA6319 /* SearchResult.swift in Sources */,
+				D3449B842959A65D0049C75D /* TabBarController.swift in Sources */,
 				D30EA802294E10FC00F65FFC /* NewConversationViewController.swift in Sources */,
 				D383A4E22950627400DA6319 /* UserDefaultsKeysConstant.swift in Sources */,
+				D3449B8C2959DD7C0049C75D /* ProfileUTableViewCell.swift in Sources */,
 				D36059E82948E39D009DA1D6 /* SceneDelegate.swift in Sources */,
 				D30EA7F9294DFF3600F65FFC /* ConversationsUIView.swift in Sources */,
 				D30EA80A294E199200F65FFC /* StorageManager.swift in Sources */,
@@ -512,6 +543,7 @@
 				D3924A85294C3CD000FEF1E5 /* RegisterUIView.swift in Sources */,
 				D3D09ED9294B145300B1CC02 /* CustomError.swift in Sources */,
 				D30EA7FF294E02C100F65FFC /* ChatViewController.swift in Sources */,
+				D3449B872959A6850049C75D /* ProfileViewController.swift in Sources */,
 				D3449B7929597F670049C75D /* NetworkConnectionManager.swift in Sources */,
 				D3D09ED7294B142D00B1CC02 /* APIRequest.swift in Sources */,
 			);

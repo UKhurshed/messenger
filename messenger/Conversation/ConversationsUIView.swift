@@ -50,11 +50,12 @@ class ConversationsUIView: UIView {
         noConservationLabel.text = "No Conservations!"
         noConservationLabel.textAlignment = .center
         noConservationLabel.textColor = .gray
+        noConservationLabel.isHidden = true
         noConservationLabel.font = .systemFont(ofSize: 21, weight: .medium)
         
         addSubview(noConservationLabel)
         noConservationLabel.snp.makeConstraints { makeNoConv in
-            makeNoConv.top.equalToSuperview().offset(130)
+            makeNoConv.top.equalToSuperview().offset(200)
             makeNoConv.left.equalToSuperview()
             makeNoConv.right.equalToSuperview()
         }

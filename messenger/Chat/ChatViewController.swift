@@ -132,6 +132,7 @@ class ChatViewController: MessagesViewController {
                 }
                 else {
                     print("failed to send location message")
+                    self?.showError(errorDescription: "Failed to send location message")
                 }
             })
         }
@@ -389,8 +390,7 @@ extension ChatViewController: InputBarAccessoryViewDelegate {
                     self?.conversationId = newConversationId
                     self?.listenForMessages(id: newConversationId, shouldScrollToBottom: true)
                     self?.messageInputBar.inputTextView.text = nil
-                }
-                else {
+                } else {
                     print("faield ot send")
                 }
             })
@@ -408,6 +408,7 @@ extension ChatViewController: InputBarAccessoryViewDelegate {
                 }
                 else {
                     print("failed to send")
+                    self?.showError(errorDescription: "Failed to send")
                 }
             })
         }

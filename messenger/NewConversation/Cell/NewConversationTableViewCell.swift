@@ -68,6 +68,10 @@ class NewConversationTableViewCell: UITableViewCell {
         }
     }
     
+    required init?(coder: NSCoder) {
+        fatalError("init(coder:) has not been implemented")
+    }
+    
     public func setupData(with model: SearchResult) {
         userNameLabel.text = model.name
 
@@ -84,9 +88,5 @@ class NewConversationTableViewCell: UITableViewCell {
                 print("failed to get image url: \(error)")
             }
         }
-    }
-
-    required init?(coder: NSCoder) {
-        fatalError("init(coder:) has not been implemented")
     }
 }

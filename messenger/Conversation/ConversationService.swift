@@ -12,7 +12,6 @@ class ConversationServiceImpl: ConversationService {
     func getAllConversations(completion: @escaping (Result<[Conversation], CustomError>) -> Void) {
         
         if NetworkConnectionManager.shared.isConnected {
-            
             print("Internet connection is available")
             guard let email = UserDefaults.standard.value(forKey: "email") as? String else {
                 completion(.failure(CustomError.userNotExistsFromDisk))
@@ -48,7 +47,6 @@ class ConversationServiceImpl: ConversationService {
     }
     
     private func insertConversations(conversaions: [Conversation]) {
-        
         do {
             let conv = ConversationsDB()
             try RealmManager.shared.realm.write {
@@ -69,6 +67,5 @@ class ConversationServiceImpl: ConversationService {
         } catch let error {
             print("insertConversations error: \(error.localizedDescription)")
         }
-        
     }
 }
