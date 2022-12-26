@@ -21,6 +21,11 @@
 		D33B4E5529490D9C00927435 /* R.generated.swift in Sources */ = {isa = PBXBuildFile; fileRef = D33B4E5429490D9C00927435 /* R.generated.swift */; };
 		D33B4E5729490DAD00927435 /* Localizable.strings in Resources */ = {isa = PBXBuildFile; fileRef = D33B4E5629490DAD00927435 /* Localizable.strings */; };
 		D33B4E592949112E00927435 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = D33B4E582949112E00927435 /* GoogleService-Info.plist */; };
+		D3449B7929597F670049C75D /* NetworkConnectionManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3449B7829597F670049C75D /* NetworkConnectionManager.swift */; };
+		D3449B7B295980660049C75D /* ConversationPresenter.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3449B7A295980660049C75D /* ConversationPresenter.swift */; };
+		D3449B7D295981330049C75D /* ConversationInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3449B7C295981330049C75D /* ConversationInteractor.swift */; };
+		D3449B7F295981BD0049C75D /* ConversationService.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3449B7E295981BD0049C75D /* ConversationService.swift */; };
+		D3449B82295983ED0049C75D /* RealmManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = D3449B81295983ED0049C75D /* RealmManager.swift */; };
 		D36059E62948E39D009DA1D6 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D36059E52948E39D009DA1D6 /* AppDelegate.swift */; };
 		D36059E82948E39D009DA1D6 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D36059E72948E39D009DA1D6 /* SceneDelegate.swift */; };
 		D36059EA2948E39D009DA1D6 /* ConversationsViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D36059E92948E39D009DA1D6 /* ConversationsViewController.swift */; };
@@ -61,6 +66,11 @@
 		D33B4E5429490D9C00927435 /* R.generated.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = R.generated.swift; sourceTree = "<group>"; };
 		D33B4E5629490DAD00927435 /* Localizable.strings */ = {isa = PBXFileReference; lastKnownFileType = text.plist.strings; path = Localizable.strings; sourceTree = "<group>"; };
 		D33B4E582949112E00927435 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		D3449B7829597F670049C75D /* NetworkConnectionManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkConnectionManager.swift; sourceTree = "<group>"; };
+		D3449B7A295980660049C75D /* ConversationPresenter.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConversationPresenter.swift; sourceTree = "<group>"; };
+		D3449B7C295981330049C75D /* ConversationInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConversationInteractor.swift; sourceTree = "<group>"; };
+		D3449B7E295981BD0049C75D /* ConversationService.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConversationService.swift; sourceTree = "<group>"; };
+		D3449B81295983ED0049C75D /* RealmManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RealmManager.swift; sourceTree = "<group>"; };
 		D36059E22948E39D009DA1D6 /* messenger.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = messenger.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		D36059E52948E39D009DA1D6 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		D36059E72948E39D009DA1D6 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -130,6 +140,9 @@
 				D30EA7FA294DFFA000F65FFC /* Cell */,
 				D36059E92948E39D009DA1D6 /* ConversationsViewController.swift */,
 				D30EA7F8294DFF3600F65FFC /* ConversationsUIView.swift */,
+				D3449B7A295980660049C75D /* ConversationPresenter.swift */,
+				D3449B7C295981330049C75D /* ConversationInteractor.swift */,
+				D3449B7E295981BD0049C75D /* ConversationService.swift */,
 			);
 			path = Conversation;
 			sourceTree = "<group>";
@@ -178,6 +191,14 @@
 			path = StorageManager;
 			sourceTree = "<group>";
 		};
+		D3449B80295983170049C75D /* RealmManager */ = {
+			isa = PBXGroup;
+			children = (
+				D3449B81295983ED0049C75D /* RealmManager.swift */,
+			);
+			path = RealmManager;
+			sourceTree = "<group>";
+		};
 		D36059D92948E39D009DA1D6 = {
 			isa = PBXGroup;
 			children = (
@@ -214,6 +235,7 @@
 		D36059F92949012A009DA1D6 /* Common */ = {
 			isa = PBXGroup;
 			children = (
+				D3449B80295983170049C75D /* RealmManager */,
 				D383A4E02950625100DA6319 /* Utils */,
 				D30EA808294E198200F65FFC /* StorageManager */,
 				D30EA7F0294D7EC900F65FFC /* DatabaseManager */,
@@ -315,6 +337,7 @@
 			children = (
 				D3D09ED6294B142D00B1CC02 /* APIRequest.swift */,
 				D3D09ED8294B145300B1CC02 /* CustomError.swift */,
+				D3449B7829597F670049C75D /* NetworkConnectionManager.swift */,
 			);
 			path = URLSessionFacade;
 			sourceTree = "<group>";
@@ -465,13 +488,17 @@
 				D30EA7F2294D7EDC00F65FFC /* DatabaseManager.swift in Sources */,
 				D30EA804294E111D00F65FFC /* NewConversationUIView.swift in Sources */,
 				D3D09ED0294B102500B1CC02 /* LoginModel.swift in Sources */,
+				D3449B7B295980660049C75D /* ConversationPresenter.swift in Sources */,
+				D3449B7F295981BD0049C75D /* ConversationService.swift in Sources */,
 				D383A4FB2950A38E00DA6319 /* Models.swift in Sources */,
+				D3449B82295983ED0049C75D /* RealmManager.swift in Sources */,
 				D383A4EA295078AF00DA6319 /* PhotoViewerUIView.swift in Sources */,
 				D36059EA2948E39D009DA1D6 /* ConversationsViewController.swift in Sources */,
 				D30EA7FC294DFFB900F65FFC /* ConversationsTableViewCell.swift in Sources */,
 				D383A4ED29507B4F00DA6319 /* LocationPickerViewController.swift in Sources */,
 				D36059E62948E39D009DA1D6 /* AppDelegate.swift in Sources */,
 				D3D09EDB294B233A00B1CC02 /* LoginPresenter.swift in Sources */,
+				D3449B7D295981330049C75D /* ConversationInteractor.swift in Sources */,
 				D383A4E529506C2900DA6319 /* SearchResult.swift in Sources */,
 				D30EA802294E10FC00F65FFC /* NewConversationViewController.swift in Sources */,
 				D383A4E22950627400DA6319 /* UserDefaultsKeysConstant.swift in Sources */,
@@ -485,6 +512,7 @@
 				D3924A85294C3CD000FEF1E5 /* RegisterUIView.swift in Sources */,
 				D3D09ED9294B145300B1CC02 /* CustomError.swift in Sources */,
 				D30EA7FF294E02C100F65FFC /* ChatViewController.swift in Sources */,
+				D3449B7929597F670049C75D /* NetworkConnectionManager.swift in Sources */,
 				D3D09ED7294B142D00B1CC02 /* APIRequest.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

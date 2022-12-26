@@ -91,7 +91,7 @@ class ConversationsTableViewCell: UITableViewCell {
         
         userNameLabel.text = model.name
         print("model: \(model)")
-        
+        print("otherEmail: \(model.otherUserEmail)")
         let path = "images/\(model.otherUserEmail)_profile_picture.png"
         StorageManager.shared.downloadURL(for: path) { [weak self] result in
             switch result {

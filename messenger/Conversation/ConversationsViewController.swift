@@ -19,9 +19,12 @@ class ConversationsViewController: UIViewController {
     
     private var loginObserver: NSObjectProtocol?
     private var conversations = [Conversation]()
+    
+    var presenter: ConversationInputView!
 
     override func viewDidLoad() {
         super.viewDidLoad()
+        setup()
         conversationsUIView.delegate = self
         navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .compose, target: self, action: #selector(tapCompose))
         
@@ -35,8 +38,18 @@ class ConversationsViewController: UIViewController {
         })
     }
     
+    private func setup() {
+        let viewController = self
+        let service = ConversationServiceImpl()
+        let interactor = ConversationInteractor(service: service)
+        let presenter = ConversationPresenter()
+
+        viewController.presenter = presenter
+        presenter.interactor = interactor
+        presenter.viewController = viewController
+    }
+    
     private func startListeningForConversations() {
-        conversationsUIView.showSpinner()
         guard let email = UserDefaults.standard.value(forKey: "email") as? String else {
             conversationsUIView.stopSpinner()
             return
@@ -49,23 +62,8 @@ class ConversationsViewController: UIViewController {
         print("starting conversation fetch...")
 
         let safeEmail = DatabaseManager.safeEmail(emailAddress: email)
-
-        DatabaseManager.shared.getAllConversations(for: safeEmail, completion: { [weak self] result in
-            switch result {
-            case .success(let conversations):
-                print("successfully got conversation models")
-                self?.conversationsUIView.stopSpinner()
-                guard !conversations.isEmpty else {
-                    self?.conversationsUIView.emptyConversation()
-                    return
-                }
-                self?.conversationsUIView.setupData(conversation: conversations)
-            case .failure(let error):
-                self?.conversationsUIView.stopSpinner()
-                self?.conversationsUIView.showError()
-                print("failed to get convos: \(error.localizedDescription)")
-            }
-        })
+        
+        presenter.getAllConversations()
     }
     
     @objc private func tapCompose() {
@@ -130,3 +128,30 @@ extension ConversationsViewController: ConversationsUIViewDelegate {
     }
 }
 
+extension ConversationsViewController: ConversationDisplayLogic {
+    func success(viewModel: [Conversation]) {
+        print("ViewModel: \(viewModel)")
+        conversations = viewModel
+        guard !viewModel.isEmpty else {
+            conversationsUIView.emptyConversation()
+            return
+        }
+        conversationsUIView.setupData(conversation: viewModel)
+    }
+    
+    func showError(errorDescription: String) {
+        DispatchQueue.main.async {
+            let alert  = UIAlertController(title: R.string.localizable.errorLabel(), message: errorDescription, preferredStyle: .alert)
+                alert.addAction(UIAlertAction(title: R.string.localizable.alertDismiss(), style: .cancel, handler: nil))
+            self.present(alert, animated: true)
+        }
+    }
+    
+    func startLoading() {
+        conversationsUIView.showSpinner()
+    }
+    
+    func finishLoading() {
+        conversationsUIView.stopSpinner()
+    }
+}

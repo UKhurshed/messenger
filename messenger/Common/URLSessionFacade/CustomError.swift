@@ -16,6 +16,10 @@ enum CustomError: Error {
     case freedReference
     case serviceWasNil
     case customError
+    case userNotExistsFromDisk
+    case getConversationsFromFirebaseError
+    case failedToFetch
+    case getConversationsFromDatabaseError
 }
 
 extension CustomError: LocalizedError {
@@ -37,6 +41,14 @@ extension CustomError: LocalizedError {
             return R.string.localizable.serviceWasNil()
         case .customError:
             return "Custom Error"
+        case .userNotExistsFromDisk:
+            return "User isn't exist from service"
+        case .getConversationsFromFirebaseError:
+            return "While getting conversations from server occurred error"
+        case .failedToFetch:
+            return "This means blah failed"
+        case .getConversationsFromDatabaseError:
+            return "While getting conversations from local database occurred error"
         }
     }
 }
