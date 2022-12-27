@@ -126,6 +126,10 @@ extension ConversationsViewController: ConversationsUIViewDelegate {
         vc.navigationItem.largeTitleDisplayMode = .never
         navigationController?.pushViewController(vc, animated: true)
     }
+    
+    func refreshTableView() {
+        presenter.getAllConversations()
+    }
 }
 
 extension ConversationsViewController: ConversationDisplayLogic {
@@ -137,6 +141,7 @@ extension ConversationsViewController: ConversationDisplayLogic {
             return
         }
         conversationsUIView.setupData(conversation: viewModel)
+        conversationsUIView.stopRefreshControl()
     }
     
     func showError(errorDescription: String) {

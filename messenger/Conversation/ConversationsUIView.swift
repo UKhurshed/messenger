@@ -10,6 +10,7 @@ import JGProgressHUD
 
 protocol ConversationsUIViewDelegate: AnyObject {
     func deselectItem(_ model: Conversation)
+    func refreshTableView()
 }
 
 class ConversationsUIView: UIView {
@@ -17,6 +18,7 @@ class ConversationsUIView: UIView {
     private let tableView = UITableView()
     private let noConservationLabel = UILabel()
     private let spinner = JGProgressHUD(style: .dark)
+    private let refreshControl = UIRefreshControl()
     
     private var conversations = [Conversation]()
     
@@ -27,6 +29,8 @@ class ConversationsUIView: UIView {
         backgroundColor = .white
         initTableView()
         initNoConservation()
+        initRefresh()
+        tableView.addSubview(refreshControl)
     }
     
     private func initTableView() {
@@ -60,6 +64,14 @@ class ConversationsUIView: UIView {
             makeNoConv.right.equalToSuperview()
         }
     }
+    
+    private func initRefresh() {
+        refreshControl.addTarget(self, action: #selector(refresh), for: .valueChanged)
+    }
+    
+    @objc private func refresh() {
+        delegate?.refreshTableView()
+    }
 
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
@@ -90,6 +102,12 @@ class ConversationsUIView: UIView {
     
     public func stopSpinner() {
         spinner.dismiss(animated: true)
+    }
+    
+    public func stopRefreshControl() {
+        if refreshControl.isRefreshing {
+            refreshControl.endRefreshing()
+        }
     }
 }
 
