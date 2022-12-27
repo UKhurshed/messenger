@@ -22,5 +22,17 @@ class ProfileUTableViewCell: UITableViewCell {
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
+    
+    public func setupData(with profileModel: ProfileModel) {
+        self.textLabel?.text = profileModel.title
+        switch profileModel.profileModelType {
+        case .info:
+            textLabel?.textAlignment = .left
+            selectionStyle = .none
+        case .logout:
+            textLabel?.textColor = .red
+            textLabel?.textAlignment = .center
+        }
+    }
 
 }
