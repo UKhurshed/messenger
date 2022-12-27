@@ -13,7 +13,7 @@
 
 "firstName" = "First Name";
 "lastName" = "Last Name";
-"registerBtn" = "Register";
+"register" = "Register";
 
 "errorLabel" = "Error";
 "alertDismiss" = "Dismiss";
@@ -25,3 +25,48 @@
 "networkSessionError" = "Network session error was occurred";
 "freedReference" = "The arc reference was nil";
 "serviceWasNil" = "Service instance was nil";
+"userIsntExist" = "User isn't exist from service";
+"getConversationFirebaseError" = "While getting conversations from server occurred error";
+"failedToFetch" = "This means blah failed";
+"getConversationFromDB" = "While getting conversations from local database occurred error";
+"unknownErrorOccurred" = "Unknown error occurred. Please try again";
+
+"userAlreadyExists" = "Looks like a account for that email address already exists";
+"enterAllInfo" = "Please enter information to Create Account";
+"woops" = "Woops";
+"dismiss" = "Dismiss";
+"cancel" = "Cancel";
+
+"profilePicture" = "Profile picture";
+"selectPhotoQuestion" = "How would you like to select a picture?";
+"takePhoto" = "Take a photo";
+"choosePhoto" = "Choose a photo";
+"imageDoesntExist" = "Image doesn't exist";
+"createAccount" = "Create Account";
+"enterInfoToLogIn" = "Please enter information to Log In";
+
+"noConversations" = "No Conservations!";
+"chats" = "Chats";
+"profile" = "Profile";
+"noResults" = "No Results";
+
+"attachMedia" = "AttachMedia";
+"whatMediaAttach" = "What would you like to attach?";
+"photo" = "Photo";
+"video" = "Video";
+"audio" = "Audio";
+"location" = "Location";
+"pickLocation" = "Pick a location";
+"locationFailed" = "Failed to send location message";
+"attachPhoto" = "Attach Photo";
+"wherePhotoAttach" = "Where would you like to attach a photo from";
+"camera" = "Camera";
+"photoLibrary" = "Photo Library";
+"attachVideo" = "Attach Video";
+"whereVideoAttach" = "Where would you like to attach a video from?";
+"library" = "Library";
+"photoSendFailed" = "Failed to send photo message";
+"sendMessageFailed" = "Failed to send";
+
+"logOut" = "Log Out";
+"send" = "

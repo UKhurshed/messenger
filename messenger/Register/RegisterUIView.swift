@@ -145,7 +145,7 @@ class RegisterUIView: UIView {
     private func initRegisterBtn() {
         registerBtn.translatesAutoresizingMaskIntoConstraints = false
         registerBtn.backgroundColor = .blue
-        registerBtn.setTitle(R.string.localizable.registerBtn(), for: .normal)
+        registerBtn.setTitle(R.string.localizable.register(), for: .normal)
         registerBtn.setTitleColor(.white, for: .normal)
         registerBtn.layer.cornerRadius = 8
         registerBtn.addTarget(self, action: #selector(registerTapper), for: .touchUpInside)

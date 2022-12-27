@@ -9,4 +9,6 @@ import Foundation
 
 class UserDefaultsKeysConstant {
     static let downloadURL = "downloadURL"
+    static let email = "email"
+    static let name = "name"
 }

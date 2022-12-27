@@ -50,17 +50,17 @@ extension RegisterViewController: RegisterUIViewDelegate {
         DatabaseManager.shared.userExists(with: email) { [weak self] exists in
             guard !exists else{
                 //user already exists
-                self?.showWarningAlert(message: "Looks like a account for that email address already exists")
+                self?.showWarningAlert(message: R.string.localizable.userAlreadyExists())
                 return
             }
             self?.presenterInput.createAccount(request: RegisterRequest(firstName: firstName, lastName: lastName, email: email, password: password, profileImage: self?.registerUIView.getLastImage()))
         }
     }
     
-    private func showWarningAlert(message: String = "Please enter information to Create Account.") {
-        let alert = UIAlertController(title: "Woops", message: message, preferredStyle: .alert)
+    private func showWarningAlert(message: String = R.string.localizable.enterAllInfo()) {
+        let alert = UIAlertController(title: R.string.localizable.woops(), message: message, preferredStyle: .alert)
         
-        alert.addAction(UIAlertAction(title: "Dismiss", style: .cancel, handler: nil))
+        alert.addAction(UIAlertAction(title: R.string.localizable.dismiss(), style: .cancel, handler: nil))
         present(alert, animated: true)
     }
     
@@ -73,24 +73,24 @@ extension RegisterViewController: UIImagePickerControllerDelegate, UINavigationC
     
     func presentPhotoActionSheet() {
         let actionSheet = UIAlertController(
-            title: "Profile picture",
-            message: "How would you like to select a picture?",
+            title: R.string.localizable.profilePicture(),
+            message: R.string.localizable.selectPhotoQuestion(),
             preferredStyle: .actionSheet)
         
         actionSheet.addAction(UIAlertAction(
-            title: "Cancel",
+            title: R.string.localizable.cancel(),
             style: .cancel,
             handler: nil))
         
         actionSheet.addAction(UIAlertAction(
-            title: "Take a photo",
+            title: R.string.localizable.takePhoto(),
             style: .default,
             handler: { [weak self] _ in
                 self?.presentCamera()
             }))
         
         actionSheet.addAction(UIAlertAction(
-            title: "Choose a photo",
+            title: R.string.localizable.choosePhoto(),
             style: .default,
             handler: { [weak self] _ in
                 self?.presentPhoto()

@@ -29,7 +29,7 @@ class NewConversationViewController: UIViewController {
         super.viewDidLoad()
         newConversationUIView.delegate = self
         navigationController?.navigationBar.topItem?.titleView = newConversationUIView.takeSearchBar()
-        navigationItem.rightBarButtonItem = UIBarButtonItem(title: "Cancel", style: .done, target: self, action: #selector(dismissSelf))
+        navigationItem.rightBarButtonItem = UIBarButtonItem(title: R.string.localizable.cancel(), style: .done, target: self, action: #selector(dismissSelf))
     }
     
     @objc private func dismissSelf() {
@@ -87,7 +87,7 @@ extension NewConversationViewController: NewConversationUIViewDelegate {
     func filterUsers(with term: String) {
         // update the UI: eitehr show results or show no results label
         print("hasFetched: \(hasFetched)")
-        guard let currentUserEmail = UserDefaults.standard.value(forKey: "email") as? String, hasFetched else {
+        guard let currentUserEmail = UserDefaults.standard.value(forKey: UserDefaultsKeysConstant.email) as? String, hasFetched else {
             newConversationUIView.stopSpinner()
             return
         }

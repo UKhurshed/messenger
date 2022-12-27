@@ -51,7 +51,7 @@ class ConversationsUIView: UIView {
     
     private func initNoConservation() {
         noConservationLabel.translatesAutoresizingMaskIntoConstraints = false
-        noConservationLabel.text = "No Conservations!"
+        noConservationLabel.text = R.string.localizable.noConversations()
         noConservationLabel.textAlignment = .center
         noConservationLabel.textColor = .gray
         noConservationLabel.isHidden = true
@@ -141,7 +141,6 @@ extension ConversationsUIView: UITableViewDelegate {
     
     func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
         if editingStyle == .delete {
-            let conversationID = conversations[indexPath.row].id
             tableView.beginUpdates()
             self.conversations.remove(at: indexPath.row)
             tableView.deleteRows(at: [indexPath], with: .left)

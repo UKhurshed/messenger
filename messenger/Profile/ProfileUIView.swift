@@ -24,9 +24,9 @@ class ProfileUIView: UIView {
         super.init(frame: frame)
         backgroundColor = .white
         initTableView()
-        profileModel.append(ProfileModel(profileModelType: .info, title: "Name: \(UserDefaults.standard.value(forKey:"name") as? String ?? "No Name")", handler: nil))
+        profileModel.append(ProfileModel(profileModelType: .info, title: "Name: \(UserDefaults.standard.value(forKey: UserDefaultsKeysConstant.name) as? String ?? "No Name")", handler: nil))
         
-        profileModel.append(ProfileModel(profileModelType: .info, title: "Email: \(UserDefaults.standard.value(forKey:"email") as? String ?? "No Email")", handler: nil))
+        profileModel.append(ProfileModel(profileModelType: .info, title: "Email: \(UserDefaults.standard.value(forKey: UserDefaultsKeysConstant.email) as? String ?? "No Email")", handler: nil))
         
         profileModel.append(ProfileModel(profileModelType: .logout, title: "Log Out", handler: { [weak self] in
             guard let strongSelf = self else {
@@ -137,7 +137,7 @@ class TableHeader: UIView {
     }
     
     private func downloadPhoto() {
-        guard let email = UserDefaults.standard.value(forKey: "email") as? String else {
+        guard let email = UserDefaults.standard.value(forKey: UserDefaultsKeysConstant.email) as? String else {
             return
         }
         

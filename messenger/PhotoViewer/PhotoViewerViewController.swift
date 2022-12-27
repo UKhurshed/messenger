@@ -30,7 +30,7 @@ class PhotoViewerViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        title = "Photo"
+        title = R.string.localizable.photo()
         navigationItem.largeTitleDisplayMode = .never
         photoViewerUIView.setupData(url: url)
     }

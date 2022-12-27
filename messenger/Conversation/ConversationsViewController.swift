@@ -50,7 +50,7 @@ class ConversationsViewController: UIViewController {
     }
     
     private func startListeningForConversations() {
-        guard let email = UserDefaults.standard.value(forKey: "email") as? String else {
+        guard UserDefaults.standard.value(forKey: UserDefaultsKeysConstant.email) is String else {
             conversationsUIView.stopSpinner()
             return
         }
@@ -60,14 +60,11 @@ class ConversationsViewController: UIViewController {
         }
 
         print("starting conversation fetch...")
-
-        let safeEmail = DatabaseManager.safeEmail(emailAddress: email)
         
         presenter.getAllConversations()
     }
     
     @objc private func tapCompose() {
-        print("tapCompose")
         let vc = NewConversationViewController()
         vc.completion = { [weak self] result in
             guard let strongSelf = self else {

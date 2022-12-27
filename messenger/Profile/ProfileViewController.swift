@@ -29,14 +29,14 @@ extension ProfileViewController: ProfileUIDelegate {
         let actionSheet = UIAlertController(title: "",
                                       message: "",
                                       preferredStyle: .actionSheet)
-        actionSheet.addAction(UIAlertAction(title: "Log Out", style: .destructive, handler: { [weak self] _ in
+        actionSheet.addAction(UIAlertAction(title: R.string.localizable.logOut(), style: .destructive, handler: { [weak self] _ in
             
             guard let strongSelf = self else {
                 return
             }
             
-            UserDefaults.standard.setValue(nil, forKey: "email")
-            UserDefaults.standard.setValue(nil, forKey: "name")
+            UserDefaults.standard.setValue(nil, forKey: UserDefaultsKeysConstant.email)
+            UserDefaults.standard.setValue(nil, forKey: UserDefaultsKeysConstant.name)
             
             do {
                 try FirebaseAuth.Auth.auth().signOut()
@@ -51,7 +51,7 @@ extension ProfileViewController: ProfileUIDelegate {
             }
         }))
         
-        actionSheet.addAction(UIAlertAction(title: "Cancel",
+        actionSheet.addAction(UIAlertAction(title: R.string.localizable.cancel(),
                                             style: .cancel,
                                             handler: nil))
         present(actionSheet, animated: true)

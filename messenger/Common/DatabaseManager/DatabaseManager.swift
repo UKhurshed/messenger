@@ -149,7 +149,7 @@ extension DatabaseManager {
     
     public func conversationExists(iwth targetRecipientEmail: String, completion: @escaping (Result<String, Error>) -> Void) {
         let safeRecipientEmail = DatabaseManager.safeEmail(emailAddress: targetRecipientEmail)
-        guard let senderEmail = UserDefaults.standard.value(forKey: "email") as? String else {
+        guard let senderEmail = UserDefaults.standard.value(forKey: UserDefaultsKeysConstant.email) as? String else {
             return
         }
         let safeSenderEmail = DatabaseManager.safeEmail(emailAddress: senderEmail)
@@ -268,8 +268,8 @@ extension DatabaseManager {
     
     
     public func createNewConversation(with otherUserEmail: String, name: String, firstMessage: Message, completion: @escaping (Bool) -> Void) {
-        guard let currentEmail = UserDefaults.standard.value(forKey: "email") as? String,
-            let currentNamme = UserDefaults.standard.value(forKey: "name") as? String else {
+        guard let currentEmail = UserDefaults.standard.value(forKey: UserDefaultsKeysConstant.email) as? String,
+              let currentName = UserDefaults.standard.value(forKey: UserDefaultsKeysConstant.name) as? String else {
                 return
         }
         let safeEmail = DatabaseManager.safeEmail(emailAddress: currentEmail)
@@ -325,7 +325,7 @@ extension DatabaseManager {
             let recipient_newConversationData: [String: Any] = [
                 "id": conversationId,
                 "other_user_email": safeEmail,
-                "name": currentNamme,
+                "name": currentName,
                 "latest_message": [
                     "date": dateString,
                     "message": message,
@@ -393,7 +393,7 @@ extension DatabaseManager {
             break
         }
 
-        guard let myEmmail = UserDefaults.standard.value(forKey: "email") as? String else {
+        guard let myEmmail = UserDefaults.standard.value(forKey: UserDefaultsKeysConstant.email) as? String else {
             completion(false)
             return
         }
@@ -430,7 +430,7 @@ extension DatabaseManager {
     /// Sends a message with target conversation and message
     public func sendMessage(to conversation: String, otherUserEmail: String, name: String, newMessage: Message, completion: @escaping (Bool) -> Void) {
 
-        guard let myEmail = UserDefaults.standard.value(forKey: "email") as? String else {
+        guard let myEmail = UserDefaults.standard.value(forKey: UserDefaultsKeysConstant.email) as? String else {
             completion(false)
             return
         }
@@ -480,7 +480,7 @@ extension DatabaseManager {
                 break
             }
 
-            guard let myEmmail = UserDefaults.standard.value(forKey: "email") as? String else {
+            guard let myEmmail = UserDefaults.standard.value(forKey: UserDefaultsKeysConstant.email) as? String else {
                 completion(false)
                 return
             }
@@ -569,7 +569,7 @@ extension DatabaseManager {
                             ]
                             var databaseEntryConversations = [[String: Any]]()
 
-                            guard let currentName = UserDefaults.standard.value(forKey: "name") as? String else {
+                            guard let currentName = UserDefaults.standard.value(forKey: UserDefaultsKeysConstant.name) as? String else {
                                 return
                             }
 

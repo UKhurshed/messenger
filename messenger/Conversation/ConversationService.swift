@@ -13,7 +13,7 @@ class ConversationServiceImpl: ConversationService {
         
         if NetworkConnectionManager.shared.isConnected {
             print("Internet connection is available")
-            guard let email = UserDefaults.standard.value(forKey: "email") as? String else {
+            guard let email = UserDefaults.standard.value(forKey: UserDefaultsKeysConstant.email) as? String else {
                 completion(.failure(CustomError.userNotExistsFromDisk))
                 return
             }

@@ -21,15 +21,15 @@ class LoginViewController: UIViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        title = "Log In"
-        navigationItem.rightBarButtonItem = UIBarButtonItem(title: "Register", style: .done, target: self, action: #selector(tappedRegister))
+        title = R.string.localizable.logIn()
+        navigationItem.rightBarButtonItem = UIBarButtonItem(title: R.string.localizable.register(), style: .done, target: self, action: #selector(tappedRegister))
         loginUIView.delegate = self
         setup()
     }
     
     @objc private func tappedRegister() {
         let vc = RegisterViewController()
-        vc.title = "Create Account"
+        vc.title = R.string.localizable.createAccount()
         navigationController?.pushViewController(vc, animated: true)
     }
 
@@ -51,9 +51,9 @@ extension LoginViewController: LogInBtnPressedDelegate {
     }
     
     private func showWarningAlert() {
-        let alert = UIAlertController(title: "Woops", message: "Please enter information to Log In.", preferredStyle: .alert)
+        let alert = UIAlertController(title: R.string.localizable.woops(), message: R.string.localizable.enterInfoToLogIn(), preferredStyle: .alert)
         
-        alert.addAction(UIAlertAction(title: "Dismiss", style: .cancel, handler: nil))
+        alert.addAction(UIAlertAction(title: R.string.localizable.dismiss(), style: .cancel, handler: nil))
         present(alert, animated: true)
     }
 }

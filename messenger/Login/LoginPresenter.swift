@@ -48,13 +48,13 @@ class LoginPresenter: LoginViewInput {
                         let lastName = userData["last_name"] as? String else {
                             return
                     }
-                    UserDefaults.standard.set("\(firstName) \(lastName)", forKey: "name")
+                    UserDefaults.standard.set("\(firstName) \(lastName)", forKey: UserDefaultsKeysConstant.name)
 
                 case .failure(let error):
                     print("Failed to read data with error \(error)")
                 }
             })
-            UserDefaults.standard.set(request.email, forKey: "email")
+            UserDefaults.standard.set(request.email, forKey: UserDefaultsKeysConstant.email)
             strongSelf.viewContoller?.success(viewModel: LoginViewModel(email: user.email ?? "email"))
         }
     }

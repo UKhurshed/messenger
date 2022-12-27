@@ -59,7 +59,7 @@ class NewConversationUIView: UIView {
     
     private func initNoResults() {
         noResults.translatesAutoresizingMaskIntoConstraints = false
-        noResults.text = "No Results"
+        noResults.text = R.string.localizable.noResults()
         noResults.textAlignment = .center
         noResults.textColor = .green
         noResults.font = .systemFont(ofSize: 21, weight: .medium)
@@ -124,7 +124,6 @@ extension NewConversationUIView: UITableViewDataSource {
 extension NewConversationUIView: UITableViewDelegate {
     func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
         tableView.deselectRow(at: indexPath, animated: true)
-        // start conversation
         let targetUserData = results[indexPath.row]
 
         delegate?.dismissDidSelectRowAt(item: targetUserData)

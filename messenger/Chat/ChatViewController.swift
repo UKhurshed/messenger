@@ -42,7 +42,7 @@ class ChatViewController: MessagesViewController {
     }
     
     private var selfSender: Sender? {
-        guard let email = UserDefaults.standard.value(forKey: "email") as? String else {
+        guard let email = UserDefaults.standard.value(forKey: UserDefaultsKeysConstant.email) as? String else {
             return nil
         }
         let safeEmail = DatabaseManager.safeEmail(emailAddress: email)
@@ -76,29 +76,29 @@ class ChatViewController: MessagesViewController {
     }
     
     private func presentInputActionSheet() {
-        let actionSheet = UIAlertController(title: "Attach Media",
-                                            message: "What would you like to attach?",
+        let actionSheet = UIAlertController(title: R.string.localizable.attachMedia(),
+                                            message: R.string.localizable.whatMediaAttach(),
                                             preferredStyle: .actionSheet)
-        actionSheet.addAction(UIAlertAction(title: "Photo", style: .default, handler: { [weak self] _ in
+        actionSheet.addAction(UIAlertAction(title: R.string.localizable.photo(), style: .default, handler: { [weak self] _ in
             self?.presentPhotoInputActionsheet()
         }))
-        actionSheet.addAction(UIAlertAction(title: "Video", style: .default, handler: { [weak self]  _ in
+        actionSheet.addAction(UIAlertAction(title: R.string.localizable.video(), style: .default, handler: { [weak self]  _ in
             self?.presentVideoInputActionsheet()
         }))
-        actionSheet.addAction(UIAlertAction(title: "Audio", style: .default, handler: {  _ in
+        actionSheet.addAction(UIAlertAction(title: R.string.localizable.audio(), style: .default, handler: {  _ in
 
         }))
-        actionSheet.addAction(UIAlertAction(title: "Location", style: .default, handler: { [weak self]  _ in
+        actionSheet.addAction(UIAlertAction(title: R.string.localizable.location(), style: .default, handler: { [weak self]  _ in
             self?.presentLocationPicker()
         }))
-        actionSheet.addAction(UIAlertAction(title: "Cancel", style: .cancel, handler: nil))
+        actionSheet.addAction(UIAlertAction(title: R.string.localizable.cancel(), style: .cancel, handler: nil))
 
         present(actionSheet, animated: true)
     }
     
     private func presentLocationPicker() {
         let vc = LocationPickerViewController(coordinates: nil)
-        vc.title = "Pick Location"
+        vc.title = R.string.localizable.pickLocation()
         vc.navigationItem.largeTitleDisplayMode = .never
         vc.completion = { [weak self] selectedCoorindates in
 
@@ -132,7 +132,7 @@ class ChatViewController: MessagesViewController {
                 }
                 else {
                     print("failed to send location message")
-                    self?.showError(errorDescription: "Failed to send location message")
+                    self?.showError(errorDescription: R.string.localizable.locationFailed())
                 }
             })
         }
@@ -140,10 +140,10 @@ class ChatViewController: MessagesViewController {
     }
     
     private func presentPhotoInputActionsheet() {
-        let actionSheet = UIAlertController(title: "Attach Photo",
-                                            message: "Where would you like to attach a photo from",
+        let actionSheet = UIAlertController(title: R.string.localizable.attachPhoto(),
+                                            message: R.string.localizable.wherePhotoAttach(),
                                             preferredStyle: .actionSheet)
-        actionSheet.addAction(UIAlertAction(title: "Camera", style: .default, handler: { [weak self] _ in
+        actionSheet.addAction(UIAlertAction(title: R.string.localizable.camera(), style: .default, handler: { [weak self] _ in
 
             let picker = UIImagePickerController()
             picker.sourceType = .camera
@@ -152,7 +152,7 @@ class ChatViewController: MessagesViewController {
             self?.present(picker, animated: true)
 
         }))
-        actionSheet.addAction(UIAlertAction(title: "Photo Library", style: .default, handler: { [weak self] _ in
+        actionSheet.addAction(UIAlertAction(title: R.string.localizable.photoLibrary(), style: .default, handler: { [weak self] _ in
 
             let picker = UIImagePickerController()
             picker.sourceType = .photoLibrary
@@ -161,16 +161,16 @@ class ChatViewController: MessagesViewController {
             self?.present(picker, animated: true)
 
         }))
-        actionSheet.addAction(UIAlertAction(title: "Cancel", style: .cancel, handler: nil))
+        actionSheet.addAction(UIAlertAction(title: R.string.localizable.cancel(), style: .cancel, handler: nil))
 
         present(actionSheet, animated: true)
     }
     
     private func presentVideoInputActionsheet() {
-        let actionSheet = UIAlertController(title: "Attach Video",
-                                            message: "Where would you like to attach a video from?",
+        let actionSheet = UIAlertController(title: R.string.localizable.attachVideo(),
+                                            message: R.string.localizable.whereVideoAttach(),
                                             preferredStyle: .actionSheet)
-        actionSheet.addAction(UIAlertAction(title: "Camera", style: .default, handler: { [weak self] _ in
+        actionSheet.addAction(UIAlertAction(title: R.string.localizable.camera(), style: .default, handler: { [weak self] _ in
 
             let picker = UIImagePickerController()
             picker.sourceType = .camera
@@ -181,7 +181,7 @@ class ChatViewController: MessagesViewController {
             self?.present(picker, animated: true)
 
         }))
-        actionSheet.addAction(UIAlertAction(title: "Library", style: .default, handler: { [weak self] _ in
+        actionSheet.addAction(UIAlertAction(title: R.string.localizable.library(), style: .default, handler: { [weak self] _ in
 
             let picker = UIImagePickerController()
             picker.sourceType = .photoLibrary
@@ -192,7 +192,7 @@ class ChatViewController: MessagesViewController {
             self?.present(picker, animated: true)
 
         }))
-        actionSheet.addAction(UIAlertAction(title: "Cancel", style: .cancel, handler: nil))
+        actionSheet.addAction(UIAlertAction(title: R.string.localizable.cancel(), style: .cancel, handler: nil))
 
         present(actionSheet, animated: true)
     }
@@ -298,7 +298,7 @@ extension ChatViewController: UIImagePickerControllerDelegate, UINavigationContr
                             print("sent photo message")
                         }
                         else {
-                            self?.showError(errorDescription: "failed to send photo message")
+                            self?.showError(errorDescription: R.string.localizable.photoSendFailed())
                             print("failed to send photo message")
                         }
 
@@ -348,7 +348,7 @@ extension ChatViewController: UIImagePickerControllerDelegate, UINavigationContr
                         }
                         else {
                             print("failed to send photo message")
-                            self?.showError(errorDescription: "failed to send photo message")
+                            self?.showError(errorDescription: R.string.localizable.photoSendFailed())
                         }
 
                     })
@@ -408,7 +408,7 @@ extension ChatViewController: InputBarAccessoryViewDelegate {
                 }
                 else {
                     print("failed to send")
-                    self?.showError(errorDescription: "Failed to send")
+                    self?.showError(errorDescription: R.string.localizable.sendMessageFailed())
                 }
             })
         }
@@ -416,7 +416,7 @@ extension ChatViewController: InputBarAccessoryViewDelegate {
 
     private func createMessageId() -> String? {
         // date, otherUesrEmail, senderEmail, randomInt
-        guard let currentUserEmail = UserDefaults.standard.value(forKey: "email") as? String else {
+        guard let currentUserEmail = UserDefaults.standard.value(forKey: UserDefaultsKeysConstant.email) as? String else {
             return nil
         }
 
@@ -548,7 +548,7 @@ extension ChatViewController: MessageCellDelegate {
             let coordinates = locationData.location.coordinate
             let vc = LocationPickerViewController(coordinates: coordinates)
             
-            vc.title = "Location"
+            vc.title = R.string.localizable.location()
             navigationController?.pushViewController(vc, animated: true)
         default:
             break

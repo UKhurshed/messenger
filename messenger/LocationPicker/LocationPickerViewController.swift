@@ -36,7 +36,7 @@ class LocationPickerViewController: UIViewController {
         super.viewDidLoad()
         locationUIView.delegate = self
         if isPickable {
-            navigationItem.rightBarButtonItem = UIBarButtonItem(title: "Send",
+            navigationItem.rightBarButtonItem = UIBarButtonItem(title: R.string.localizable.send(),
                                                                 style: .done,
                                                                 target: self,
                                                                 action: #selector(sendButtonTapped))

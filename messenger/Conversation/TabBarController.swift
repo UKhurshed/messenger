@@ -15,16 +15,18 @@ class TabBarController: UITabBarController {
         let convVC = ConversationsViewController()
         let profileVC = ProfileViewController()
 
-        convVC.title = "Chats"
-        profileVC.title = "Profile"
+        convVC.title = R.string.localizable.chats()
+        profileVC.title = R.string.localizable.profile()
         convVC.navigationItem.largeTitleDisplayMode = .always
         profileVC.navigationItem.largeTitleDisplayMode = .always
         
         let navMain = UINavigationController(rootViewController: convVC)
         let navProfile = UINavigationController(rootViewController: profileVC)
         
-        navMain.tabBarItem = UITabBarItem(title: "Chats", image: UIImage(systemName: "message"), tag: 1)
-        navProfile.tabBarItem = UITabBarItem(title: "Profile", image: UIImage(systemName: "gear"), tag: 1)
+        navMain.tabBarItem = UITabBarItem(title: R.string.localizable.chats(),
+                                          image: UIImage(systemName: "message"), tag: 1)
+        navProfile.tabBarItem = UITabBarItem(title: R.string.localizable.profile(),
+                                             image: UIImage(systemName: "gear"), tag: 1)
         
         navMain.navigationBar.prefersLargeTitles = true
         navProfile.navigationBar.prefersLargeTitles = true

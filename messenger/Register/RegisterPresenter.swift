@@ -34,12 +34,12 @@ class RegisterPresenter: RegisterViewInput {
             }
             strongSelf.viewContoller?.finishLoading()
             guard let result = authResult, error == nil else {
-                strongSelf.viewContoller?.showError(errorDescription: error?.localizedDescription ?? "Error occurred")
+                strongSelf.viewContoller?.showError(errorDescription: error?.localizedDescription ?? R.string.localizable.unknownErrorOccurred())
                 return
             }
             
-            UserDefaults.standard.setValue(request.email, forKey: "email")
-            UserDefaults.standard.setValue("\(request.firstName) \(request.lastName)", forKey: "name")
+            UserDefaults.standard.setValue(request.email, forKey: UserDefaultsKeysConstant.email)
+            UserDefaults.standard.setValue("\(request.firstName) \(request.lastName)", forKey: UserDefaultsKeysConstant.name)
             
             let chatUser = ChatUser(
                 firstName: request.firstName,
@@ -49,7 +49,7 @@ class RegisterPresenter: RegisterViewInput {
             DatabaseManager.shared.insertUser(with: chatUser) { success in
                     if success {
                         guard let image = request.profileImage, let data = image.pngData() else {
-                            strongSelf.viewContoller?.showError(errorDescription: "Image doesn't exists")
+                            strongSelf.viewContoller?.showError(errorDescription: R.string.localizable.imageDoesntExist())
                             return
                         }
                         
