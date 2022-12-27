@@ -62,7 +62,7 @@ extension LoginViewController: LoginDisplayLogic {
     func success(viewModel: LoginViewModel) {
         print("viewModel: \(viewModel)")
         DispatchQueue.main.async {
-            let mainVC = ConversationsViewController()
+            let mainVC = TabBarController()
             mainVC.modalPresentationStyle = .fullScreen
             self.present(mainVC, animated: true)
         }

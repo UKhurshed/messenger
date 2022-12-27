@@ -44,7 +44,7 @@ extension ProfileViewController: ProfileUIDelegate {
                 let vc = LoginViewController()
                 let nav = UINavigationController(rootViewController: vc)
                 nav.modalPresentationStyle = .fullScreen
-                strongSelf.present(vc, animated: true)
+                strongSelf.present(nav, animated: true)
             } catch {
                 print("log out")
                 strongSelf.showError(errorDescription: error.localizedDescription)
