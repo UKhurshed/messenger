@@ -40,7 +40,7 @@ extension ProfileViewController: ProfileUIDelegate {
             
             do {
                 try FirebaseAuth.Auth.auth().signOut()
-                
+                RealmManager.shared.realm.deleteAll()
                 let vc = LoginViewController()
                 let nav = UINavigationController(rootViewController: vc)
                 nav.modalPresentationStyle = .fullScreen
