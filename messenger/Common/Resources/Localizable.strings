@@ -67,6 +67,8 @@
 "library" = "Library";
 "photoSendFailed" = "Failed to send photo message";
 "sendMessageFailed" = "Failed to send";
+"chatScreenInfo" = "Chat Screen Info";
+"emptyMessages" = "Empty messages";
 
 "logOut" = "Log Out";
 "send" = "Send";
