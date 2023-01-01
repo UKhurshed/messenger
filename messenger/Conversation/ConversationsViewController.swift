@@ -6,8 +6,10 @@
 //
 
 import UIKit
+import Contacts
+import ContactsUI
 
-class ConversationsViewController: UIViewController {
+class ConversationsViewController: UIViewController, CNContactPickerDelegate {
     
     private var conversationsUIView: ConversationsUIView {
         self.view as! ConversationsUIView
@@ -26,7 +28,7 @@ class ConversationsViewController: UIViewController {
         super.viewDidLoad()
         setup()
         conversationsUIView.delegate = self
-        navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .compose, target: self, action: #selector(tapCompose))
+        navigationItem.rightBarButtonItem = UIBarButtonItem(barButtonSystemItem: .compose, target: self, action: #selector(contactTapped))
         
         startListeningForConversations()
         loginObserver = NotificationCenter.default.addObserver(forName: .none, object: nil, queue: .main, using: { [weak self] _ in
@@ -36,6 +38,18 @@ class ConversationsViewController: UIViewController {
 
             strongSelf.startListeningForConversations()
         })
+    }
+    
+    @objc private func contactTapped() {
+        let vc = CNContactPickerViewController()
+        vc.delegate = self
+        present(vc, animated: true)
+    }
+    
+    func contactPicker(_ picker: CNContactPickerViewController, didSelect contact: CNContact) {
+        let name = contact.givenName + " " + contact.familyName
+        print("Name: \(name)")
+        print("Contact: \(contact)")
     }
     
     private func setup() {

@@ -91,11 +91,6 @@ class ConversationsUIView: UIView {
         }
     }
     
-    public func showError() {
-        tableView.isHidden = true
-        noConservationLabel.isHidden = false
-    }
-    
     public func showSpinner() {
         spinner.show(in: self)
     }
