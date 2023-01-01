@@ -25,6 +25,8 @@ class ChatViewController: MessagesViewController {
     public var isNewConversation = false
     public let otherUserEmail: String
     
+    var presenter: ChatInputView!
+    
     public static let dateFormatter: DateFormatter = {
         let formatter = DateFormatter()
         formatter.dateFormat = "yyyy-MM-dd HH:mm:ss"
@@ -56,12 +58,26 @@ class ChatViewController: MessagesViewController {
         super.viewDidLoad()
         view.backgroundColor = .red
         
+        setup()
         messagesCollectionView.messagesDataSource = self
         messagesCollectionView.messagesLayoutDelegate = self
         messagesCollectionView.messagesDisplayDelegate = self
         messagesCollectionView.messageCellDelegate = self
         messageInputBar.delegate = self
         setupInputButton()
+    }
+    
+    private func setup() {
+        let viewController = self
+        let firebaseService = FirebaseChatService()
+        let localDBService = LocalDBMessagesForConversation()
+        let service = ChatServiceImpl(firebaseSerice: firebaseService, localDBService: localDBService)
+        let interactor = ChatInteractor(service: service)
+        let presenter = ChatPresenter()
+
+        viewController.presenter = presenter
+        presenter.interactor = interactor
+        presenter.viewController = viewController
     }
     
     private func setupInputButton() {
@@ -197,35 +213,18 @@ class ChatViewController: MessagesViewController {
         present(actionSheet, animated: true)
     }
     
-    private func listenForMessages(id: String, shouldScrollToBottom: Bool) {
-        DatabaseManager.shared.getAllMessagesForConversation(with: id, completion: { [weak self] result in
-            switch result {
-            case .success(let messages):
-                print("success in getting messages: \(messages)")
-                guard !messages.isEmpty else {
-                    print("messages are empty")
-                    return
-                }
-                self?.messages = messages
-
-                DispatchQueue.main.async {
-                    self?.messagesCollectionView.reloadDataAndKeepOffset()
-
-                    if shouldScrollToBottom {
-                        self?.messagesCollectionView.scrollToLastItem()
-                    }
-                }
-            case .failure(let error):
-                print("failed to get messages: \(error)")
-            }
-        })
+    private func listenForMessages(id: String) {
+        print("listenMessage")
+        presenter.getAllMessages(with: id)
     }
     
     override func viewDidAppear(_ animated: Bool) {
         super.viewDidAppear(animated)
         messageInputBar.inputTextView.becomeFirstResponder()
+        print("chat viewDidAppear")
         if let conversationId = conversationId {
-            listenForMessages(id: conversationId, shouldScrollToBottom: true)
+            print("conversationID: \(conversationId)")
+            listenForMessages(id: conversationId)
         }
     }
     
@@ -388,18 +387,18 @@ extension ChatViewController: InputBarAccessoryViewDelegate {
                     self?.isNewConversation = false
                     let newConversationId = "conversation_\(mmessage.messageId)"
                     self?.conversationId = newConversationId
-                    self?.listenForMessages(id: newConversationId, shouldScrollToBottom: true)
+                    self?.listenForMessages(id: newConversationId)
                     self?.messageInputBar.inputTextView.text = nil
                 } else {
                     print("faield ot send")
                 }
             })
-        }
-        else {
+        } else {
             guard let conversationId = conversationId, let name = self.title else {
                 return
             }
 
+            print("conversationID: \(conversationId)")
             // append to existing conversation data
             DatabaseManager.shared.sendMessage(to: conversationId, otherUserEmail: otherUserEmail, name: name, newMessage: mmessage, completion: { [weak self] success in
                 if success {
@@ -580,5 +579,37 @@ extension ChatViewController: MessageCellDelegate {
         default:
             break
         }
+    }
+}
+
+extension ChatViewController: ChatDisplayLogic {
+    func success(viewModel: [Message]) {
+        guard !viewModel.isEmpty else {
+            print("messages are empty")
+            DispatchQueue.main.async {
+                let alert  = UIAlertController(title: R.string.localizable.chatScreenInfo(), message: R.string.localizable.emptyMessages(), preferredStyle: .alert)
+                    alert.addAction(UIAlertAction(title: R.string.localizable.alertDismiss(), style: .cancel, handler: nil))
+                self.present(alert, animated: true)
+            }
+            return
+        }
+        
+        self.messages = viewModel
+        DispatchQueue.main.async {
+            self.messagesCollectionView.reloadDataAndKeepOffset()
+            self.messagesCollectionView.scrollToLastItem()
+        }
+    }
+    
+    func failure(errorDescription: String) {
+        showError(errorDescription: errorDescription)
+    }
+    
+    func startLoading() {
+        showSpinner()
+    }
+    
+    func finishLoading() {
+        stopSpinner()
     }
 }
