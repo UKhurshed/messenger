@@ -8,11 +8,11 @@
 import Foundation
 
 protocol ConversationBusinessLogic: AnyObject {
-    func getAllConversations(completion: @escaping (Result<[Conversation], CustomError>) -> Void)
+    func getAllConversations(completion: @escaping (Result<[ConversationViewModel], CustomError>) -> Void)
 }
 
 protocol ConversationService {
-    func getAllConversations(completion: @escaping (Result<[Conversation], CustomError>) -> Void)
+    func getAllConversations(completion: @escaping (Result<[ConversationViewModel], CustomError>) -> Void)
 }
 
 class ConversationInteractor: ConversationBusinessLogic {
@@ -23,7 +23,7 @@ class ConversationInteractor: ConversationBusinessLogic {
         self.service = service
     }
 
-    func getAllConversations(completion: @escaping (Result<[Conversation], CustomError>) -> Void) {
+    func getAllConversations(completion: @escaping (Result<[ConversationViewModel], CustomError>) -> Void) {
         service.getAllConversations { result in
             switch result {
             case .success(let conversations):

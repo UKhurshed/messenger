@@ -16,13 +16,15 @@ class ConversationDB: Object, Identifiable {
     @Persisted var id: String
     @Persisted var name: String
     @Persisted var otherUserEmail: String
+    @Persisted var avatarPicture: Data?
     @Persisted var latestMessage: LatestMessageDB?
     
-    convenience init(id: String, name: String, otherUserEmail: String, latestMessage: LatestMessageDB? = nil) {
+    convenience init(id: String, name: String, otherUserEmail: String, avatarPicture: Data? = nil, latestMessage: LatestMessageDB? = nil) {
         self.init()
         self.id = id
         self.name = name
         self.otherUserEmail = otherUserEmail
+        self.avatarPicture = avatarPicture
         self.latestMessage = latestMessage
     }
 }

@@ -6,13 +6,15 @@
 //
 
 import Foundation
+import Contacts
+import ContactsUI
 
 protocol ConversationInputView: AnyObject {
     func getAllConversations()
 }
 
 protocol ConversationDisplayLogic: AnyObject {
-    func success(viewModel: [Conversation])
+    func success(viewModel: [ConversationViewModel])
     func showError(errorDescription: String)
     func startLoading()
     func finishLoading()

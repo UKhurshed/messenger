@@ -82,7 +82,7 @@ class ConversationsTableViewCell: UITableViewCell {
         }
     }
     
-    public func setupData(with model: Conversation) {
+    public func setupData(with model: ConversationViewModel) {
         if model.latestMessage.text.contains(".png") {
             userMessageLabel.text = "1 photo"
         } else {
@@ -91,19 +91,7 @@ class ConversationsTableViewCell: UITableViewCell {
         
         userNameLabel.text = model.name
         print("model: \(model)")
-        let path = "images/\(model.otherUserEmail)_profile_picture.png"
-        StorageManager.shared.downloadURL(for: path) { [weak self] result in
-            switch result {
-            case .success(let url):
-
-                DispatchQueue.main.async {
-                    self?.userImageView.sd_setImage(with: url, completed: nil)
-                }
-
-            case .failure(let error):
-                print("failed to get image url: \(error)")
-            }
-        }
+        userImageView.image = model.avatar
     }
     
     required init?(coder: NSCoder) {

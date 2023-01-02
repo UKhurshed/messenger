@@ -9,7 +9,7 @@ import UIKit
 import JGProgressHUD
 
 protocol ConversationsUIViewDelegate: AnyObject {
-    func deselectItem(_ model: Conversation)
+    func deselectItem(_ model: ConversationViewModel)
     func refreshTableView()
 }
 
@@ -20,7 +20,7 @@ class ConversationsUIView: UIView {
     private let spinner = JGProgressHUD(style: .dark)
     private let refreshControl = UIRefreshControl()
     
-    private var conversations = [Conversation]()
+    private var conversations = [ConversationViewModel]()
     
     weak var delegate: ConversationsUIViewDelegate?
     
@@ -82,7 +82,7 @@ class ConversationsUIView: UIView {
         noConservationLabel.isHidden = false
     }
     
-    public func setupData(conversation: [Conversation]) {
+    public func setupData(conversation: [ConversationViewModel]) {
         noConservationLabel.isHidden = true
         tableView.isHidden = false
         self.conversations = conversation

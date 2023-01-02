@@ -8,6 +8,7 @@
 import UIKit
 import Contacts
 import ContactsUI
+import FirebaseAuth
 
 class ConversationsViewController: UIViewController, CNContactPickerDelegate {
     
@@ -15,14 +16,14 @@ class ConversationsViewController: UIViewController, CNContactPickerDelegate {
         self.view as! ConversationsUIView
     }
     
+    private var loginObserver: NSObjectProtocol?
+    private var conversations = [ConversationViewModel]()
+    
+    var presenter: ConversationInputView!
+    
     override func loadView() {
         view = ConversationsUIView()
     }
-    
-    private var loginObserver: NSObjectProtocol?
-    private var conversations = [Conversation]()
-    
-    var presenter: ConversationInputView!
 
     override func viewDidLoad() {
         super.viewDidLoad()
@@ -47,9 +48,33 @@ class ConversationsViewController: UIViewController, CNContactPickerDelegate {
     }
     
     func contactPicker(_ picker: CNContactPickerViewController, didSelect contact: CNContact) {
-        let name = contact.givenName + " " + contact.familyName
-        print("Name: \(name)")
-        print("Contact: \(contact)")
+        guard let email = contact.emailAddresses.first?.value else {
+            DispatchQueue.main.async {
+                let alert  = UIAlertController(title: R.string.localizable.errorLabel(), message: "User doesn't have email", preferredStyle: .alert)
+                    alert.addAction(UIAlertAction(title: R.string.localizable.alertDismiss(), style: .cancel, handler: nil))
+                self.present(alert, animated: true)
+            }
+            return
+        }
+        
+        let safeEmail = DatabaseManager.safeEmail(emailAddress: String(email))
+        DatabaseManager.shared.isUserExist(email: safeEmail) { [weak self] result in
+            switch result {
+            case .success(let bool):
+                if bool {
+                    self?.createNewConversation(result: SearchResult(name: contact.givenName + contact.familyName, email: String(email)))
+                } else {
+                    print("user doesn't have an account")
+                    DispatchQueue.main.async {
+                        let alert  = UIAlertController(title: R.string.localizable.errorLabel(), message: "User doesn't have Firebase Account", preferredStyle: .alert)
+                            alert.addAction(UIAlertAction(title: R.string.localizable.alertDismiss(), style: .cancel, handler: nil))
+                        self?.present(alert, animated: true)
+                    }
+                }
+            case .failure(let error):
+                print("isUserExist error: \(error.localizedDescription)")
+            }
+        }
     }
     
     private func setup() {
@@ -131,7 +156,7 @@ class ConversationsViewController: UIViewController, CNContactPickerDelegate {
 }
 
 extension ConversationsViewController: ConversationsUIViewDelegate {
-    func deselectItem(_ model: Conversation) {
+    func deselectItem(_ model: ConversationViewModel) {
         let vc = ChatViewController(with: model.otherUserEmail, id: model.id)
         vc.title = model.name
         vc.navigationItem.largeTitleDisplayMode = .never
@@ -144,7 +169,7 @@ extension ConversationsViewController: ConversationsUIViewDelegate {
 }
 
 extension ConversationsViewController: ConversationDisplayLogic {
-    func success(viewModel: [Conversation]) {
+    func success(viewModel: [ConversationViewModel]) {
         print("ViewModel: \(viewModel)")
         conversations = viewModel
         guard !viewModel.isEmpty else {

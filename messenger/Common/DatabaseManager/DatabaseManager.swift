@@ -103,6 +103,26 @@ extension DatabaseManager {
             completion(.success(value))
         })
     }
+    
+    public func isUserExist(email: String, completion: @escaping (Result<Bool, Error>) -> Void) {
+        getAllUsers { result in
+            
+            switch result {
+            case .success(let map):
+                for i in map {
+                    for k in i {
+                        if k.value.contains(email) {
+                            completion(.success(true))
+                            return
+                        }
+                    }
+                }
+                completion(.success(false))
+            case .failure(let error):
+                    completion(.failure(error))
+            }
+        }
+    }
 
     public enum DatabaseError: Error {
         case failedToFetch
@@ -116,7 +136,9 @@ extension DatabaseManager {
     }
     
     /// Fetches and returns all conversations for the user with passed in email
-    public func getAllConversations(for email: String, completion: @escaping (Result<[Conversation], Error>) -> Void) {
+    public func getAllConversations(for email: String, completion:
+                                    @escaping (Result<[Conversation], Error>) -> Void) {
+        print("observe: \(email)/conversations")
         database.child("\(email)/conversations").observe(.value, with: { snapshot in
             guard let value = snapshot.value as? [[String: Any]] else{
                 completion(.failure(DatabaseError.failedToFetch))

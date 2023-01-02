@@ -6,10 +6,11 @@
 //
 
 import Foundation
+import UIKit
 
 class ConversationServiceImpl: ConversationService {
     
-    func getAllConversations(completion: @escaping (Result<[Conversation], CustomError>) -> Void) {
+    func getAllConversations(completion: @escaping (Result<[ConversationViewModel], CustomError>) -> Void) {
         
         if NetworkConnectionManager.shared.isConnected {
             print("Internet connection is available")
@@ -23,8 +24,9 @@ class ConversationServiceImpl: ConversationService {
                 switch result {
                 case .success(let conversations):
                     print("successfully got conversation models: \(conversations)")
-                    completion(.success(conversations))
-                    self?.insertConversations(conversaions: conversations)
+                    let mapping = self?.mappingConversations(conversations: conversations) ?? []
+                    completion(.success(mapping))
+                    self?.insertConversations(conversations: conversations)
                 case .failure(_):
                     completion(.failure(CustomError.getConversationsFromFirebaseError))
                 }
@@ -32,30 +34,69 @@ class ConversationServiceImpl: ConversationService {
         } else {
             print("Internet connection isn't available")
             let objectConversations = RealmManager.shared.realm.objects(ConversationsDB.self)
-            var conversations = [Conversation]()
+            var conversations = [ConversationViewModel]()
             guard let last = objectConversations.last else {
                 completion(.failure(CustomError.getConversationsFromDatabaseError))
                 return
             }
             for item in last.conversations {
                 let latestMessage = LatestMessage(date: item.latestMessage?.date ?? "date", text: item.latestMessage?.text ?? "text", isRead: item.latestMessage?.isRead ?? false)
-                let conversation = Conversation(id: item.id, name: item.name, otherUserEmail: item.otherUserEmail, latestMessage: latestMessage)
+                let conversation = ConversationViewModel(id: item.id, name: item.name, avatar: UIImage(data: item.avatarPicture ?? Data()) ?? UIImage(named: "user")!, otherUserEmail: item.otherUserEmail, latestMessage: latestMessage)
                 conversations.append(conversation)
             }
             completion(.success(conversations))
         }
     }
     
-    private func insertConversations(conversaions: [Conversation]) {
+    private func mappingConversations(conversations: [Conversation]) -> [ConversationViewModel] {
+        var convVM = [ConversationViewModel]()
+        
+        for conversation in conversations {
+            let path = "images/\(conversation.otherUserEmail)_profile_picture.png"
+            let picture = downloadPhoto(email: path)
+            let conv = ConversationViewModel(id: conversation.id,
+                                                 name: conversation.name,
+                                                 avatar: picture ?? UIImage(named: "user")!,
+                                                 otherUserEmail: conversation.otherUserEmail,
+                                                 latestMessage: conversation.latestMessage)
+            convVM.append(conv)
+        }
+        return convVM
+    }
+    
+    private func downloadPhoto(email: String) -> UIImage? {
+        var img: UIImage?
+        StorageManager.shared.downloadURL(for: email) { result in
+            switch result {
+            case .success(let url):
+                if let data = try? Data(contentsOf: url) {
+                    img = UIImage(data: data)
+                    return
+                } else {
+                    img = UIImage(named: "user")
+                    return
+                }
+            case .failure(let error):
+                print("failed to get image url: \(error)")
+                img = UIImage(named: "user")
+                return
+            }
+        }
+        print("img: \(img)")
+        return img
+    }
+    
+    private func insertConversations(conversations: [Conversation]) {
         do {
             let conv = ConversationsDB()
             try RealmManager.shared.realm.write {
-                let conversations = RealmManager.shared.realm.objects(ConversationDB.self)
-                RealmManager.shared.realm.delete(conversations)
+                let conversationsDB = RealmManager.shared.realm.objects(ConversationDB.self)
+                RealmManager.shared.realm.delete(conversationsDB)
                 var conversationDB = [ConversationDB]()
-                for conversaion in conversaions {
-                    let latestDB = LatestMessageDB(date: conversaion.latestMessage.date, text: conversaion.latestMessage.text, isRead: conversaion.latestMessage.isRead)
-                    let conversation = ConversationDB(id: conversaion.id, name: conversaion.name, otherUserEmail: conversaion.otherUserEmail, latestMessage: latestDB)
+                for conversation in conversations {
+                    let ava = self.downloadPhoto(email: conversation.otherUserEmail)
+                    let latestDB = LatestMessageDB(date: conversation.latestMessage.date, text: conversation.latestMessage.text, isRead: conversation.latestMessage.isRead)
+                    let conversation = ConversationDB(id: conversation.id, name: conversation.name, otherUserEmail: conversation.otherUserEmail, avatarPicture: ava?.pngData(), latestMessage: latestDB)
                     RealmManager.shared.realm.add(latestDB)
                     RealmManager.shared.realm.add(conversation)
                     

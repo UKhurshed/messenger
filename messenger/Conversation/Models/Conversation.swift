@@ -6,6 +6,7 @@
 //
 
 import Foundation
+import UIKit
 
 struct Conversation {
     let id: String
@@ -20,3 +21,10 @@ struct LatestMessage {
     let isRead: Bool
 }
 
+struct ConversationViewModel {
+    let id: String
+    let name: String
+    let avatar: UIImage
+    let otherUserEmail: String
+    let latestMessage: LatestMessage
+}
