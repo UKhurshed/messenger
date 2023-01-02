@@ -72,3 +72,6 @@
 
 "logOut" = "Log Out";
 "send" = "Send";
+
+"userDoesntHaveFireAcc" = "User doesn't have Firebase Account";
+"userDoesntHaveEmail" = "User doesn't have email";

@@ -50,7 +50,7 @@ class ConversationsViewController: UIViewController, CNContactPickerDelegate {
     func contactPicker(_ picker: CNContactPickerViewController, didSelect contact: CNContact) {
         guard let email = contact.emailAddresses.first?.value else {
             DispatchQueue.main.async {
-                let alert  = UIAlertController(title: R.string.localizable.errorLabel(), message: "User doesn't have email", preferredStyle: .alert)
+                let alert  = UIAlertController(title: R.string.localizable.errorLabel(), message: R.string.localizable.userDoesntHaveEmail(), preferredStyle: .alert)
                     alert.addAction(UIAlertAction(title: R.string.localizable.alertDismiss(), style: .cancel, handler: nil))
                 self.present(alert, animated: true)
             }
@@ -66,7 +66,7 @@ class ConversationsViewController: UIViewController, CNContactPickerDelegate {
                 } else {
                     print("user doesn't have an account")
                     DispatchQueue.main.async {
-                        let alert  = UIAlertController(title: R.string.localizable.errorLabel(), message: "User doesn't have Firebase Account", preferredStyle: .alert)
+                        let alert  = UIAlertController(title: R.string.localizable.errorLabel(), message: R.string.localizable.userDoesntHaveFireAcc(), preferredStyle: .alert)
                             alert.addAction(UIAlertAction(title: R.string.localizable.alertDismiss(), style: .cancel, handler: nil))
                         self?.present(alert, animated: true)
                     }
