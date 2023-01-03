@@ -40,7 +40,7 @@ class ConversationServiceImpl: ConversationService {
                 return
             }
             for item in last.conversations {
-                let latestMessage = LatestMessage(date: item.latestMessage?.date ?? "date", text: item.latestMessage?.text ?? "text", isRead: item.latestMessage?.isRead ?? false)
+                let latestMessage = LatestMessage(date: item.latestMessage?.date ?? "", text: item.latestMessage?.text ?? "", isRead: item.latestMessage?.isRead ?? false)
                 let conversation = ConversationViewModel(id: item.id, name: item.name, avatar: UIImage(data: item.avatarPicture ?? Data()) ?? UIImage(named: "user")!, otherUserEmail: item.otherUserEmail, latestMessage: latestMessage)
                 conversations.append(conversation)
             }
