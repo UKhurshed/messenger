@@ -141,7 +141,7 @@ extension DatabaseManager {
         print("observe: \(email)/conversations")
         database.child("\(email)/conversations").observe(.value, with: { snapshot in
             guard let value = snapshot.value as? [[String: Any]] else{
-                completion(.failure(DatabaseError.failedToFetch))
+                completion(.success([]))
                 return
             }
 
